@@ -2,7 +2,7 @@
     "configurations": [
         {
             "type": "java",
-            "name": "CodeLens (Launch) - App",
+            "name": "Launch Relogio",
             "request": "launch",
             "mainClass": "Relogio.App",
             "projectName": "Projetos"
