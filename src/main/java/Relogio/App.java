@@ -1,8 +1,7 @@
 package Relogio;
 
 /**
- * Hello world!
- *
+ * main Relogio
  */
 public class App {
     public static void main(String[] args) {

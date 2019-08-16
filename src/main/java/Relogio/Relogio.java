@@ -1,5 +1,8 @@
 package Relogio;
 
+/**
+ * Relogio
+ */
 public class Relogio {
 	public int hora = 0, minuto = 0, segundo = 0;
 	public int dia = 1, mes = 1;

@@ -6,8 +6,7 @@ import java.io.InputStreamReader;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Hello world!
- *
+ * Main Televisão
  */
 public class App {
     public static void main(String[] args) throws InterruptedException, IOException {
@@ -17,9 +16,14 @@ public class App {
             tv.interpreta();
             TimeUnit.SECONDS.sleep(4);
             System.out.println("Digite algo para prosseguir");
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            br.readLine();
+            readLine();
         }
+    }
+
+    public static String readLine() throws IOException {
+        InputStreamReader streamReader = new InputStreamReader(System.in);
+        BufferedReader bufferedReader = new BufferedReader(streamReader);
+        return bufferedReader.readLine();
     }
 
     public static void menu() {

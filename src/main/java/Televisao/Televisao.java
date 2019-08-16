@@ -1,7 +1,5 @@
 package Televisao;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -17,6 +15,10 @@ public class Televisao {
         this.ligar();
     }
 
+    /**
+     * 
+     * @throws InterruptedException
+     */
     public void interpreta() throws InterruptedException {
         int opcao = validaEntrada();
         switch (opcao) {
@@ -46,6 +48,10 @@ public class Televisao {
         }
     }
 
+    /**
+     * 
+     * Liga a televisão
+     */
     private void ligar() throws InterruptedException {
         if (this.estado == false) {
             System.out.println("Ligando...");
@@ -57,6 +63,10 @@ public class Televisao {
         }
     }
 
+    /**
+     * 
+     * Desliga a televisão
+     */
     private void desligar() throws InterruptedException {
         if (this.estado) {
             System.out.println("Desligando...");
@@ -85,13 +95,16 @@ public class Televisao {
         System.out.println("Canal " + this.canal);
     }
 
+    /**
+     * Lê String e valida se é uma entrada válida
+     * 
+     * @return Numero validado
+     */
     private int validaEntrada() {
-        InputStreamReader streamReader = new InputStreamReader(System.in);
-        BufferedReader bufferedReader = new BufferedReader(streamReader);
         String operacao;
         int numOperador = 0;
         try {
-            operacao = bufferedReader.readLine();
+            operacao = App.readLine();
             numOperador = Integer.parseInt(operacao);
             if (numOperador > 6) {
                 throw new Exception();
@@ -102,14 +115,21 @@ public class Televisao {
         return numOperador;
     }
 
+    /**
+     * Recebe String, e valida a transformação em int
+     * 
+     * @param textoSaida Texto a ser pedido para o usuário
+     * @param menor      Menor valor possível de entrada
+     * @param maior      Maior valor possível de entrada
+     * @return Numero validado
+     */
     private int validaValor(String textoSaida, int menor, int maior) {
         System.out.println(textoSaida);
-        InputStreamReader streamReader = new InputStreamReader(System.in);
-        BufferedReader bufferedReader = new BufferedReader(streamReader);
         String operacao;
         int numero = 0;
         try {
-            operacao = bufferedReader.readLine();
+
+            operacao = App.readLine();
             numero = Integer.parseInt(operacao);
             if (numero < menor || numero > maior) {
                 throw new Exception();
@@ -119,5 +139,4 @@ public class Televisao {
         }
         return numero;
     }
-
 }
