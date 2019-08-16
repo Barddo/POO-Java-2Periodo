@@ -1,20 +1,30 @@
 package Televisao;
 
-import java.io.Console;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Hello world!
  *
  */
 public class App {
-    public static void main(String[] args) throws InterruptedException {
-        String escolha = "";
-        System.out.println("Super Ultra Televisão 3000");
+    public static void main(String[] args) throws InterruptedException, IOException {
         Televisao tv = new Televisao();
+        while (tv.estado) {
+            menu();
+            tv.interpreta();
+            TimeUnit.SECONDS.sleep(4);
+            System.out.println("Digite algo para prosseguir");
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            br.readLine();
+        }
     }
 
     public static void menu() {
-        System.out.flush();
+        System.out.print("\033\143");
+        System.out.println("Super Ultra Televisão 3000");
         System.out.println("1 - Ligar");
         System.out.println("2 - Desligar");
         System.out.println("3 - Mudar o canal");

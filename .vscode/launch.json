@@ -6,6 +6,13 @@
             "request": "launch",
             "mainClass": "Relogio.App",
             "projectName": "Projetos"
+        },
+        {
+            "type": "java",
+            "name": "Launch Televisão",
+            "request": "launch",
+            "mainClass": "Televisao.App",
+            "projectName": "Projetos"
         }
     ]
 }
