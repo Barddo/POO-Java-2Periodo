@@ -1,7 +1,5 @@
 package Televisao;
 
-import java.io.Console;
-
 /**
  * Televisao
  */
