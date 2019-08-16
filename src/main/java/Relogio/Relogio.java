@@ -3,7 +3,7 @@ package Relogio;
 public class Relogio {
 	public int hora = 0, minuto = 0, segundo = 0;
 	public int dia = 1, mes = 1;
-	public static int contador = 0;
+	public static int resto = 0;
 
 	public void ajusteHora(int h, int m, int s) {
 		// int cicloRestoMin = validaSeg(s);
@@ -15,60 +15,60 @@ public class Relogio {
 		 * São semelhantes, o código abaixo é muito mais ilegível que o acima,no entanto
 		 * é menos verboso.
 		 */
+
 		validaMes(validaDia(validaHora(h + validaMin(m + validaSeg(s))) + this.dia) + this.mes);
 	}
 
 	public void ajusteData(int d, int m) {
-		int cicloRestoMes = validaDia(d);
-		validaMes(m + cicloRestoMes);
+		validaMes(m + validaDia(d));
 	}
 
 	private int validaSeg(int s) {
-		contador = 0;
+		resto = 0;
 		while (s > 60) {
-			contador++;
+			resto++;
 			s -= 60;
 		}
 		this.segundo = s;
-		return contador;
+		return resto;
 	}
 
 	private int validaMin(int m) {
-		contador = 0;
+		resto = 0;
 		while (m > 60) {
-			contador++;
+			resto++;
 			m -= 60;
 		}
 		this.minuto = m;
-		return contador;
+		return resto;
 	}
 
 	private int validaHora(int h) {
-		contador = 0;
+		resto = 0;
 		while (h >= 24) {
-			contador++;
+			resto++;
 			h -= 24;
 		}
 		this.hora = h;
-		return contador;
+		return resto;
 	}
 
 	private int validaDia(int d) {
-		contador = 0;
+		resto = 0;
 		while (d > 30) {
-			contador++;
+			resto++;
 			d -= 30;
 		}
 		this.dia = d;
-		return contador;
+		return resto;
 	}
 
 	private void validaMes(int m) {
-		contador = 0;
-		this.mes = m;
+		resto = 0;
 		while (m > 12) {
-			this.mes--;
+			m -= 12;
 		}
+		this.mes = m;
 	}
 
 	public void reiniciar(int h, int m, int s) {
@@ -84,7 +84,9 @@ public class Relogio {
 		System.out.println("Dia: " + this.dia + ", Mes: " + this.mes);
 	}
 
-	// public void passarTempo(int s) {
+	public void passarTempo(int s) {
+		validaMes(validaDia(validaHora(this.hora + validaMin(this.minuto + validaSeg(s + this.segundo))) + this.dia)
+				+ this.mes);
 
-	// }
+	}
 }

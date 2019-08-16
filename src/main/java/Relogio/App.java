@@ -6,11 +6,10 @@ package Relogio;
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
         Relogio r = new Relogio();
-        r.ajusteData(20, 12);
-        r.ajusteHora(23, 61, 10);
-
+        r.ajusteData(12, 6);
+        r.ajusteHora(30, 2, 40);
+        r.passarTempo(900000);
         r.exibeInfomacoes();
     }
 }
