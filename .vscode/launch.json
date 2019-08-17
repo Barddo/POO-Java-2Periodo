@@ -5,14 +5,14 @@
             "name": "Launch Relogio",
             "request": "launch",
             "mainClass": "Relogio.App",
-            "projectName": "Projetos"
+            "projectName": "PUC-MG"
         },
         {
             "type": "java",
             "name": "Launch Televisão",
             "request": "launch",
             "mainClass": "Televisao.App",
-            "projectName": "Projetos"
+            "projectName": "PUC-MG"
         }
     ]
 }
