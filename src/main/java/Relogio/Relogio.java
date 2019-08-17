@@ -4,21 +4,11 @@ package Relogio;
  * Relogio
  */
 public class Relogio {
-	public int hora = 0, minuto = 0, segundo = 0;
-	public int dia = 1, mes = 1;
-	public static int resto = 0;
+	private int hora = 0, minuto = 0, segundo = 0;
+	private int dia = 1, mes = 1;
+	// public static int resto = 0;
 
 	public void ajusteHora(int h, int m, int s) {
-		// int cicloRestoMin = validaSeg(s);
-		// int cicloRestoHora = validaMin(m + validaSeg(s));
-		// int cicloRestoDia = validaHora(h + validaMin(m + validaSeg(s)));
-		// int cicloRestoMes = validaDia(validaHora(h + validaMin(m + validaSeg(s))) +
-		// this.dia);
-		/*
-		 * São semelhantes, o código abaixo é muito mais ilegível que o acima,no entanto
-		 * é menos verboso.
-		 */
-
 		validaMes(validaDia(validaHora(h + validaMin(m + validaSeg(s))) + this.dia) + this.mes);
 	}
 
@@ -27,7 +17,7 @@ public class Relogio {
 	}
 
 	private int validaSeg(int s) {
-		resto = 0;
+		int resto = 0;
 		while (s > 60) {
 			resto++;
 			s -= 60;
@@ -37,7 +27,7 @@ public class Relogio {
 	}
 
 	private int validaMin(int m) {
-		resto = 0;
+		int resto = 0;
 		while (m > 60) {
 			resto++;
 			m -= 60;
@@ -47,7 +37,7 @@ public class Relogio {
 	}
 
 	private int validaHora(int h) {
-		resto = 0;
+		int resto = 0;
 		while (h >= 24) {
 			resto++;
 			h -= 24;
@@ -57,7 +47,7 @@ public class Relogio {
 	}
 
 	private int validaDia(int d) {
-		resto = 0;
+		int resto = 0;
 		while (d > 30) {
 			resto++;
 			d -= 30;
@@ -67,7 +57,6 @@ public class Relogio {
 	}
 
 	private void validaMes(int m) {
-		resto = 0;
 		while (m > 12) {
 			m -= 12;
 		}
@@ -82,14 +71,109 @@ public class Relogio {
 		this.hora = 0;
 	}
 
+	/**
+	 * @return dia em String
+	 */
+	public String getDia() {
+		return formataTempoString(this.dia);
+	}
+
+	/**
+	 * @return hora em String
+	 */
+	public String getHora() {
+		return formataTempoString(this.hora);
+	}
+
+	/**
+	 * @return mes em String
+	 */
+	public String getMes() {
+		return formataTempoString(this.mes);
+	}
+
+	/**
+	 * @return minuto em String
+	 */
+	public String getMinuto() {
+		return formataTempoString(this.minuto);
+	}
+
+	/**
+	 * @return segundo em String
+	 */
+	public String getSegundo() {
+		return formataTempoString(this.segundo);
+	}
+
+	public String formataTempoString(int tempo) {
+		if (tempo < 10 && tempo >= 0) {
+			return "0".concat(Integer.toString(tempo));
+		}
+		return Integer.toString(tempo);
+	}
+
 	public void exibeInfomacoes() {
-		System.out.println("Horas: " + this.hora + ", Minutos: " + this.minuto + ", Segundos: " + this.segundo);
-		System.out.println("Dia: " + this.dia + ", Mes: " + this.mes);
+		System.out.println("Horário: " + getHora() + ":" + getMinuto() + ":" + getSegundo());
+		System.out.println("Dia: " + getDia() + ", Mes: " + getMes());
 	}
 
 	public void passarTempo(int s) {
 		validaMes(validaDia(validaHora(this.hora + validaMin(this.minuto + validaSeg(s + this.segundo))) + this.dia)
 				+ this.mes);
+	}
 
+	private int readInt(String textoSaida) {
+		System.out.println(textoSaida);
+		String operacao;
+		int numero = 0;
+		try {
+
+			operacao = App.readLine();
+			numero = Integer.parseInt(operacao);
+		} catch (Exception e) {
+			System.out.println("Entrada inválida, digite novamente:");
+		}
+		return numero;
+	}
+
+	private int validaEntrada() {
+		String operacao;
+		int numOperador = 0;
+		try {
+			operacao = App.readLine();
+			numOperador = Integer.parseInt(operacao);
+			if (numOperador > 0 || numOperador > 4) {
+				throw new Exception();
+			}
+		} catch (Exception e) {
+			System.out.println("Entrada inválida, digite novamente:");
+		}
+		return numOperador;
+	}
+
+	public void interpreta() throws InterruptedException {
+		int opcao = validaEntrada();
+		switch (opcao) {
+		case 0:
+			System.exit(0);
+			break;
+		case 1:
+			this.ajusteHora(this.readInt("Digite as horas:"), this.readInt("Digite os minutos:"),
+					this.readInt("Digite os segundos:"));
+			break;
+		case 2:
+			this.ajusteData(this.readInt("Digite o dia:"), this.readInt("Digite o mês:"));
+			break;
+		case 3:
+			this.passarTempo(this.readInt("Digite os segundos:"));
+			break;
+		case 4:
+			this.exibeInfomacoes();
+			break;
+		default:
+			System.out.println("Opção inválida");
+			break;
+		}
 	}
 }
