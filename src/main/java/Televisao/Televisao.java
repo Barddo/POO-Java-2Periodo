@@ -43,6 +43,9 @@ public class Televisao {
         case 6:
             this.diminuiVolume();
             break;
+        case 7:
+            this.exibeVolume();
+            break;
         default:
             break;
         }
@@ -56,7 +59,6 @@ public class Televisao {
         if (this.estado == false) {
             System.out.println("Ligando...");
             TimeUnit.SECONDS.sleep(2);
-            // System.console().wait(2000);
             this.estado = true;
         } else {
             System.out.println("Televisão já ligada");
@@ -70,7 +72,6 @@ public class Televisao {
     private void desligar() throws InterruptedException {
         if (this.estado) {
             System.out.println("Desligando...");
-            // System.console().wait(2000);
             this.estado = false;
             System.out.println("Televisão desligada");
         } else {
@@ -80,10 +81,12 @@ public class Televisao {
 
     private void aumentaVolume() {
         this.volume += validaValor("Digite o volume: ", 0, 100);
+        this.exibeVolume();
     }
 
     private void diminuiVolume() {
         this.volume -= validaValor("Digite o volume: ", 0, 100);
+        this.exibeVolume();
     }
 
     private void trocaCanal() {
@@ -93,6 +96,10 @@ public class Televisao {
 
     private void exibeCanal() {
         System.out.println("Canal " + this.canal);
+    }
+
+    public void exibeVolume() {
+        System.out.println("Volume " + this.volume);
     }
 
     /**
@@ -106,7 +113,7 @@ public class Televisao {
         try {
             operacao = App.readLine();
             numOperador = Integer.parseInt(operacao);
-            if (numOperador > 6) {
+            if (numOperador > 7) {
                 throw new Exception();
             }
         } catch (Exception e) {
@@ -128,14 +135,14 @@ public class Televisao {
         String operacao;
         int numero = 0;
         try {
-
             operacao = App.readLine();
             numero = Integer.parseInt(operacao);
             if (numero < menor || numero > maior) {
                 throw new Exception();
             }
         } catch (Exception e) {
-            System.out.println("Entrada inválida, digite novamente:");
+            System.out.print("Entrada inválida. ");
+            numero = this.validaValor(textoSaida, menor, maior);
         }
         return numero;
     }

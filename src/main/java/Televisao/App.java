@@ -14,7 +14,7 @@ public class App {
         while (tv.estado) {
             menu();
             tv.interpreta();
-            TimeUnit.SECONDS.sleep(4);
+            TimeUnit.SECONDS.sleep(3);
             System.out.println("Digite algo para prosseguir");
             readLine();
         }
@@ -35,6 +35,7 @@ public class App {
         System.out.println("4 - Exibir o canal atual");
         System.out.println("5 - Aumentar o volume");
         System.out.println("6 - Aumentar o volume");
+        System.out.println("7 - Exibir o volume");
         System.out.println("0 - Sair");
     }
 }
