@@ -37,5 +37,6 @@ public class App {
         System.out.println("6 - Aumentar o volume");
         System.out.println("7 - Exibir o volume");
         System.out.println("0 - Sair");
+        System.out.println("Digite a opção desejada");
     }
 }

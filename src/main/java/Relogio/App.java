@@ -11,15 +11,11 @@ import java.util.concurrent.TimeUnit;
 public class App {
     public static void main(String[] args) throws InterruptedException, IOException {
         Relogio r = new Relogio();
-        r.ajusteData(12, 6);
-        r.ajusteHora(30, 2, 40);
-        r.passarTempo(900000);
-        r.exibeInfomacoes();
         boolean loop = true;
         while (loop) {
             menu();
             r.interpreta();
-            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.SECONDS.sleep(3);
             System.out.println("Digite algo para prosseguir");
             readLine();
         }
@@ -39,6 +35,8 @@ public class App {
         System.out.println("2 - Ajuste Data");
         System.out.println("3 - passar tempo ");
         System.out.println("4 - Exibir data e hora atual");
+        System.out.println("5 - Reiniciar");
+        System.out.println("Digite a opção desejada");
     }
 
 }

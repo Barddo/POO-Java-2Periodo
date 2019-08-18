@@ -6,14 +6,15 @@ package Relogio;
 public class Relogio {
 	private int hora = 0, minuto = 0, segundo = 0;
 	private int dia = 1, mes = 1;
-	// public static int resto = 0;
 
 	public void ajusteHora(int h, int m, int s) {
 		validaMes(validaDia(validaHora(h + validaMin(m + validaSeg(s))) + this.dia) + this.mes);
+		this.exibeInfomacoes();
 	}
 
 	public void ajusteData(int d, int m) {
 		validaMes(m + validaDia(d));
+		this.exibeInfomacoes();
 	}
 
 	private int validaSeg(int s) {
@@ -63,12 +64,13 @@ public class Relogio {
 		this.mes = m;
 	}
 
-	public void reiniciar(int h, int m, int s) {
+	public void reiniciar() {
 		this.dia = 1;
 		this.mes = 1;
 		this.minuto = 0;
 		this.segundo = 0;
 		this.hora = 0;
+		this.exibeInfomacoes();
 	}
 
 	/**
@@ -121,6 +123,7 @@ public class Relogio {
 	public void passarTempo(int s) {
 		validaMes(validaDia(validaHora(this.hora + validaMin(this.minuto + validaSeg(s + this.segundo))) + this.dia)
 				+ this.mes);
+		this.exibeInfomacoes();
 	}
 
 	private int readInt(String textoSaida) {
@@ -128,11 +131,14 @@ public class Relogio {
 		String operacao;
 		int numero = 0;
 		try {
-
 			operacao = App.readLine();
 			numero = Integer.parseInt(operacao);
+			if (numero < 0) {
+				throw new Exception();
+			}
 		} catch (Exception e) {
 			System.out.println("Entrada inválida, digite novamente:");
+			numero = this.readInt(textoSaida);
 		}
 		return numero;
 	}
@@ -143,11 +149,12 @@ public class Relogio {
 		try {
 			operacao = App.readLine();
 			numOperador = Integer.parseInt(operacao);
-			if (numOperador > 0 || numOperador > 4) {
+			if (numOperador < 0 || numOperador > 5) {
 				throw new Exception();
 			}
 		} catch (Exception e) {
 			System.out.println("Entrada inválida, digite novamente:");
+			numOperador = validaEntrada();
 		}
 		return numOperador;
 	}
@@ -171,9 +178,8 @@ public class Relogio {
 		case 4:
 			this.exibeInfomacoes();
 			break;
-		default:
-			System.out.println("Opção inválida");
-			break;
+		case 5:
+			this.reiniciar();
 		}
 	}
 }
