@@ -7,11 +7,13 @@ import java.util.concurrent.TimeUnit;
  */
 public class Televisao {
 
-    public int volume = 20;
-    private int canal = 3;
-    public boolean estado = false;
+    private int volume;
+    private int canal;
+    private boolean estado;
 
     public Televisao() throws InterruptedException {
+        this.canal = 3;
+        this.volume = 20;
         this.ligar();
     }
 
@@ -98,8 +100,16 @@ public class Televisao {
         System.out.println("Canal " + this.canal);
     }
 
-    public void exibeVolume() {
+    private void exibeVolume() {
         System.out.println("Volume " + this.volume);
+    }
+
+    /**
+     * @return Estado da Televisão (ligado ou desligado)
+     * 
+     */
+    public boolean getEstado() {
+        return estado;
     }
 
     /**

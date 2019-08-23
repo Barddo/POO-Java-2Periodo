@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 public class App {
     public static void main(String[] args) throws InterruptedException, IOException {
         Televisao tv = new Televisao();
-        while (tv.estado) {
+        while (tv.getEstado()) {
             menu();
             tv.interpreta();
             TimeUnit.SECONDS.sleep(3);

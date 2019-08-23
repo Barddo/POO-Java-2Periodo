@@ -4,8 +4,13 @@ package Relogio;
  * Relogio
  */
 public class Relogio {
-	private int hora = 0, minuto = 0, segundo = 0;
-	private int dia = 1, mes = 1;
+	private int hora, minuto, segundo;
+	private int dia, mes;
+
+	public Relogio() {
+		hora = minuto = segundo = 0;
+		dia = mes = 1;
+	}
 
 	public void ajusteHora(int h, int m, int s) {
 		validaMes(validaDia(validaHora(h + validaMin(m + validaSeg(s))) + this.dia) + this.mes);
