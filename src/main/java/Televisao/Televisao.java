@@ -10,7 +10,7 @@ public class Televisao {
     private int volume;
     private int canal;
     private boolean estado;
-
+    
     public Televisao() throws InterruptedException {
         this.canal = 3;
         this.volume = 20;
