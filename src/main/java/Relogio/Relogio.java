@@ -18,7 +18,7 @@ public class Relogio {
 		ano = 2000;
 	}
 
-	public boolean bissexto(int num) {
+	public boolean bissexto() {
 		if (this.ano % 4 == 0 && this.ano % 100 != 0) {
 			diasMes[2] = 29;
 			return true;
@@ -66,6 +66,7 @@ public class Relogio {
 
 	private int validaDia(int d) {
 		resto = 0;
+		bissexto();
 		while (d > diasMes[this.mes]) {
 			resto++;
 			d -= diasMes[this.mes];
@@ -76,6 +77,7 @@ public class Relogio {
 
 	private int validaMes(int m) {
 		resto = 0;
+		bissexto();
 		while (m > 12) {
 			this.ano++;
 			m -= 12;
