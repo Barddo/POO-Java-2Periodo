@@ -1,5 +1,7 @@
 package Relogio;
 
+import java.text.MessageFormat;
+
 /**
  * Relogio
  */
@@ -7,12 +9,13 @@ public class Relogio {
 	private int hora, minuto, segundo;
 	private int dia, mes;
 	private int[] diasMes = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	private int ano = 2000;
+	private int ano;
 	private static int resto = 0;
 
 	public Relogio() {
 		hora = minuto = segundo = 0;
 		dia = mes = 1;
+		ano = 2000;
 	}
 
 	public boolean bissexto(int num) {
@@ -93,40 +96,49 @@ public class Relogio {
 	 * @return dia em String
 	 */
 	public String getDia() {
-		return String.format("00", this.dia);
+		return String.format("%02d", this.dia);
 	}
 
 	/**
 	 * @return hora em String
 	 */
 	public String getHora() {
-		return String.format("00", this.hora);
+		return String.format("%02d", this.hora);
 	}
 
 	/**
 	 * @return mes em String
 	 */
 	public String getMes() {
-		return String.format("00", this.mes);
+		return String.format("%02d", this.mes);
 	}
 
 	/**
 	 * @return minuto em String
 	 */
 	public String getMinuto() {
-		return String.format("00", this.minuto);
+		return String.format("%02d", this.minuto);
 	}
 
 	/**
 	 * @return segundo em String
 	 */
 	public String getSegundo() {
-		return String.format("00", this.segundo);
+		return String.format("%02d", this.segundo);
+	}
+
+	/**
+	 * @return ano em String
+	 */
+	public String getAno() {
+		return String.format("%04d", this.ano);
 	}
 
 	public String exibeInfomacoes() {
-		return "Horário: " + getHora() + ":" + getMinuto() + ":" + getSegundo() + "\nDia: " + getDia() + ", Mes: "
-				+ getMes();
+		Object[] params = new Object[] { "Horário", getHora(), ":", getMinuto(), ":", getSegundo(), "\nDia:", getDia(),
+				", Mes:", getMes() , ", Ano:", getAno()};
+
+		return MessageFormat.format("{0} {1}{2}{3}{4}{5} {6}{7}{8}{9}{10}{11}", params);
 	}
 
 	public void passarTempo(int s) {

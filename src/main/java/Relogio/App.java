@@ -3,13 +3,12 @@ package Relogio;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.concurrent.TimeUnit;
 
 /**
  * main Relogio
  */
 public class App {
-	public static void main(String[] args) throws InterruptedException, IOException {
+	public static void main(String[] args) throws IOException {
 		Relogio r = new Relogio();
 		boolean loop = true;
 
@@ -23,21 +22,25 @@ public class App {
 			case 1:
 				r.ajusteHora(readInt("Digite as horas:"), readInt("Digite os minutos:"),
 						readInt("Digite os segundos:"));
+				System.out.println(r.exibeInfomacoes());
 				break;
 			case 2:
 				r.ajusteData(readInt("Digite o dia:"), readInt("Digite o mês:"));
+				System.out.println(r.exibeInfomacoes());
 				break;
 			case 3:
 				r.passarTempo(readInt("Digite os segundos:"));
+				System.out.println(r.exibeInfomacoes());
 				break;
 			case 4:
-				r.exibeInfomacoes();
+				System.out.println(r.exibeInfomacoes());
 				break;
 			case 5:
 				r.reiniciar();
+			default:
+				System.out.println("Opção inválida");
+				break;
 			}
-			;
-			TimeUnit.SECONDS.sleep(3);
 			System.out.println("Digite algo para prosseguir");
 			readLine();
 		}
@@ -59,29 +62,6 @@ public class App {
 		System.out.println("4 - Exibir data e hora atual");
 		System.out.println("5 - Reiniciar");
 		System.out.println("Digite a opção desejada");
-	}
-
-	public void interpreta() throws InterruptedException {
-		int opcao = validaEntrada();
-		switch (opcao) {
-		case 0:
-			System.exit(0);
-			break;
-		case 1:
-			r.ajusteHora(readInt("Digite as horas:"), readInt("Digite os minutos:"), readInt("Digite os segundos:"));
-			break;
-		case 2:
-			r.ajusteData(readInt("Digite o dia:"), readInt("Digite o mês:"));
-			break;
-		case 3:
-			r.passarTempo(readInt("Digite os segundos:"));
-			break;
-		case 4:
-			System.out.println(r.exibeInfomacoes());
-			break;
-		case 5:
-			r.reiniciar();
-		}
 	}
 
 	public static int readInt(String textoSaida) {
