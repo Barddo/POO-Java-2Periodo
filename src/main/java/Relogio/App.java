@@ -37,6 +37,10 @@ public class App {
 				break;
 			case 5:
 				r.reiniciar();
+				break;
+			case 6:
+				System.out.println("Bissexto? " + r.bissexto());
+				break;
 			default:
 				System.out.println("Opção inválida");
 				break;
@@ -61,6 +65,7 @@ public class App {
 		System.out.println("3 - passar tempo ");
 		System.out.println("4 - Exibir data e hora atual");
 		System.out.println("5 - Reiniciar");
+		System.out.println("6 - Descobrir se o ano atual é bissexto");
 		System.out.println("Digite a opção desejada");
 	}
 
