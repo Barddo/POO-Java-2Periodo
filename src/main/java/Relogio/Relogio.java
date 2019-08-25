@@ -136,7 +136,7 @@ public class Relogio {
 
 	public String exibeInfomacoes() {
 		Object[] params = new Object[] { "Horário", getHora(), ":", getMinuto(), ":", getSegundo(), "\nDia:", getDia(),
-				", Mes:", getMes() , ", Ano:", getAno()};
+				", Mes:", getMes(), ", Ano:", getAno() };
 
 		return MessageFormat.format("{0} {1}{2}{3}{4}{5} {6}{7}{8}{9}{10}{11}", params);
 	}
