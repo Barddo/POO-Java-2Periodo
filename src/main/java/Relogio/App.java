@@ -41,6 +41,9 @@ public class App {
 			case 6:
 				System.out.println("Bissexto? " + r.bissexto());
 				break;
+			case 7:
+				System.out.println("Dia do ano: " + r.getDiaAno());
+				break;
 			default:
 				System.out.println("Opção inválida");
 				break;
@@ -66,6 +69,7 @@ public class App {
 		System.out.println("4 - Exibir data e hora atual");
 		System.out.println("5 - Reiniciar");
 		System.out.println("6 - Descobrir se o ano atual é bissexto");
+		System.out.println("7 - Dia do ano");
 		System.out.println("Digite a opção desejada");
 	}
 
@@ -92,7 +96,7 @@ public class App {
 		try {
 			operacao = App.readLine();
 			numOperador = Integer.parseInt(operacao);
-			if (numOperador < 0 || numOperador > 5) {
+			if (numOperador < 0 || numOperador > 7) {
 				throw new Exception();
 			}
 		} catch (Exception e) {

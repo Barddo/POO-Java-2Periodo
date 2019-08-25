@@ -75,15 +75,13 @@ public class Relogio {
 		return resto;
 	}
 
-	private int validaMes(int m) {
-		resto = 0;
+	private void validaMes(int m) {
 		bissexto();
 		while (m > 12) {
 			this.ano++;
 			m -= 12;
 		}
 		this.mes = m;
-		return resto;
 	}
 
 	public void reiniciar() {
@@ -134,6 +132,15 @@ public class Relogio {
 	 */
 	public String getAno() {
 		return String.format("%04d", this.ano);
+	}
+
+	public String getDiaAno() {
+		int diaAno = this.dia;
+		bissexto();
+		for (int i = 0; i < this.mes; i++) {
+			diaAno += diasMes[i];
+		};
+		return String.format("%03d", diaAno);
 	}
 
 	public String exibeInfomacoes() {
