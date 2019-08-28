@@ -5,14 +5,14 @@ package Mercearia;
  */
 public class Produto {
 
-    private String nome = "";
-    private float custo = 0;
+    private String nome;
+    private float custo;
     Categoria categoria;
 
-    public Produto(String nome,float custo, Categoria categoria,float imposto) {
+    public Produto(String nome,float custo,float imposto) {
         this.nome = nome;
         this.custo =custo;
-        this.categoria = categoria;
+        this.categoria.setImposto(imposto);
     }
     /**
      * @return the nome
@@ -26,6 +26,13 @@ public class Produto {
      */
     public Categoria getCategoria() {
         return categoria;
+    }
+
+    /**
+     * @return the imposto
+     */
+    public float getImposto() {
+        return categoria.getImposto();
     }
 
     /**
