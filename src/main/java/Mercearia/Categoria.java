@@ -11,14 +11,7 @@ public enum Categoria {
 
     Categoria(String descricao, float imposto) {
         this.descricao = descricao;
-        this.imposto = imposto;
-    }
-
-    /**
-     * @param {} the descricao
-     */
-    public void adicionaProduto(String nome, float custo, float imposto) {
-        Produto prod = new Produto(nome, custo, imposto);
+        this.imposto = (imposto / 100);
     }
 
     /**
@@ -33,9 +26,5 @@ public enum Categoria {
      */
     public float getImposto() {
         return imposto;
-    }
-
-    public void setImposto(float imposto) {
-        this.imposto = imposto;
     }
 }
