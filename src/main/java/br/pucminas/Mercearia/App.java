@@ -1,4 +1,4 @@
-package Mercearia;
+package br.pucminas.Mercearia;
 
 public class App {
     public static void main(String[] args) throws Exception {

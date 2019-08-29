@@ -1,4 +1,4 @@
-package Mercearia;
+package br.pucminas.Mercearia;
 
 import java.util.ArrayList;
 
@@ -25,6 +25,8 @@ public class Mercearia {
         Produto p = new Produto(nome, custo, categoria);
         produtos.add(p);
     }
+
+    // FIXME Entender melhor o exercício para refazer este método.
 
     // public void vendeProduto() {
     // Object[] arrProdutos = this.produtos.toArray();

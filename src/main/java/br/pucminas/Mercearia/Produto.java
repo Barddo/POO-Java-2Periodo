@@ -1,4 +1,4 @@
-package Mercearia;
+package br.pucminas.Mercearia;
 
 /**
  * Produto

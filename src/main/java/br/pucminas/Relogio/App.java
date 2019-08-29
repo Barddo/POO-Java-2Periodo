@@ -1,4 +1,4 @@
-package Relogio;
+package br.pucminas.Relogio;
 
 import java.io.BufferedReader;
 import java.io.IOException;

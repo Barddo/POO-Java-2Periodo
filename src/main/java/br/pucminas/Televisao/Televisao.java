@@ -1,4 +1,4 @@
-package Televisao;
+package br.pucminas.Televisao;
 
 import java.util.concurrent.TimeUnit;
 

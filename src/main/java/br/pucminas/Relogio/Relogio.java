@@ -1,4 +1,4 @@
-package Relogio;
+package br.pucminas.Relogio;
 
 import java.text.MessageFormat;
 

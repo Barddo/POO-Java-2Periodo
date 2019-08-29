@@ -1,4 +1,4 @@
-package Mercearia;
+package br.pucminas.Mercearia;
 
 /**
  * Bebidas, 33% Comida, 18% Material de limpeza, 25%

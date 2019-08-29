@@ -1,4 +1,4 @@
-package Calculadora;
+package br.pucminas.Calculadora;
 
 import java.io.BufferedReader;
 import java.io.IOException;
