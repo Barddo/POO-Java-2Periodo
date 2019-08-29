@@ -5,7 +5,7 @@ package Mercearia;
  */
 public enum Categoria {
     COMIDA("Comida", 33), BEBIDA("Bebida", 18), MATERIALLIMPEZA("Material de Limpeza", 25);
-
+    
     private String descricao;
     private float imposto;
 
