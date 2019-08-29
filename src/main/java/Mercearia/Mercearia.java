@@ -9,27 +9,38 @@ public class Mercearia {
     Produto produto;
     ArrayList<Produto> produtos = new ArrayList<Produto>();
     private float lucro = 25;
+    private double lucroTotal = 0;
 
     public Mercearia() {
 
     }
 
-    public double getPrecoFinal() {
+    /**
+     * @return the lucro
+     */
+    public float getLucro() {
+        return (lucro / 100);
     }
 
-    public double getPrecoFinal() {
+    public void adicionaProduto(String nome, float custo, String categoria) {
+        Produto p = new Produto(nome, custo, categoria);
+        produtos.add(p);
+        this.lucroTotal += (getPrecoFinal(p) - custo);
+    }
 
+    public double getPrecoFinal(Produto produto) {
+        return ((produto.getCusto() + produto.getImposto()) * (1 + this.getLucro()));
     }
 
     public double getProdutoSemImposto(Produto produto) {
-        return (produto.getCusto() * lucro);
+        return (produto.getCusto() * (1 + this.getLucro()));
     }
 
     public double getLucroPorVenda(Produto produto) {
-        float preco = produto.getCusto();
+        return (getPrecoFinal(produto) - (produto.getImposto() + produto.getCusto()));
     }
 
     public double getLucroTotal() {
-
+        return this.lucroTotal;
     }
 }
