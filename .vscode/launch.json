@@ -2,30 +2,37 @@
     "configurations": [
         {
             "type": "java",
-            "name": "CodeLens (Launch) - App",
+            "name": "Mercearia",
             "request": "launch",
-            "mainClass": "Relogio.App",
-            "projectName": "Projetos"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - App",
-            "request": "launch",
-            "mainClass": "Televisao.App",
-            "projectName": "Projetos"
-        },
-        {
-            "type": "java",
-            "name": "Launch Relogio",
-            "request": "launch",
-            "mainClass": "Relogio.App",
+            "mainClass": "br.pucminas.Mercearia.App",
             "projectName": "PUC-MG"
         },
         {
             "type": "java",
-            "name": "Launch Televisão",
+            "name": "Relogio",
             "request": "launch",
-            "mainClass": "Televisao.App",
+            "mainClass": "br.pucminas.Relogio.App",
+            "projectName": "PUC-MG"
+        },
+        {
+            "type": "java",
+            "name": "Televisao",
+            "request": "launch",
+            "mainClass": "br.pucminas.Televisao.App",
+            "projectName": "PUC-MG"
+        },
+        {
+            "type": "java",
+            "name": "Relogio",
+            "request": "launch",
+            "mainClass": "br.pucminas.Relogio.App",
+            "projectName": "PUC-MG"
+        },
+        {
+            "type": "java",
+            "name": "Televisao",
+            "request": "launch",
+            "mainClass": "br.pucminas.Televisao.App",
             "projectName": "PUC-MG"
         }
     ]
