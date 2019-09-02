@@ -12,10 +12,9 @@ public class App {
         System.out.println("Hello Java");
         Mercearia merc = new Mercearia();
         int loop = 1;
-
         while (loop != 0) {
             menu();
-            loop = validaEntrada();
+            loop = validaValor(0, 5);
             switch (loop) {
             case 0:
                 System.exit(0);
@@ -36,23 +35,24 @@ public class App {
                 }
                 System.out.println("Digite a categoria do produto. ");
                 System.out.println("1 - Comida, 2 - Bebida, 3 - Material de Limpeza");
-                int categoria = read();
+                int categoria = validaValor(1, 3);
+
                 merc.adicionaProduto(nome, custo, categoria);
                 break;
             case 2:
                 System.out.println(merc.mostraProdutos());
                 System.out.println("Digite o produto");
-                System.out.println(validaReais(merc.getPrecoFinal(read())));
+                System.out.println(validaReais(merc.getPrecoFinal()));
                 break;
             case 3:
                 System.out.println(merc.mostraProdutos());
                 System.out.println("Digite o produto");
-                System.out.println(validaReais(merc.getProdutoSemImposto(read())));
+                System.out.println(validaReais(merc.getProdutoSemImposto()));
                 break;
             case 4:
                 System.out.println(merc.mostraProdutos());
                 System.out.println("Digite o produto");
-                System.out.println(validaReais(merc.getLucroPorVenda(read())));
+                System.out.println(validaReais(merc.getLucroPorVenda()));
                 break;
             case 5:
                 System.out.println(merc.mostraProdutos());
@@ -67,15 +67,30 @@ public class App {
         }
     }
 
-    public void ehValido(Mercearia m) {
-        if (m == null) {
-            System.out.println();
+    public static int read() {
+        Scanner in = new Scanner(System.in);
+        int i = 0;
+        try {
+            i = in.nextInt();
+        } catch (Exception e) {
+            System.out.println("Entrada inválida, digite novamente:");
+            i = App.read();
         }
+        return i;
     }
 
-    public static int read() throws IOException {
-        Scanner in = new Scanner(System.in);
-        return in.nextInt();
+    public static int validaValor(int menor, int maior) {
+        int numero = 0;
+        try {
+            numero = App.read();
+            if (numero < menor || numero > maior) {
+                throw new Exception();
+            }
+        } catch (Exception e) {
+            System.out.println("Entrada inválida, digite novamente:");
+            numero = validaValor(menor, maior);
+        }
+        return numero;
     }
 
     public static String readLine() throws IOException {
