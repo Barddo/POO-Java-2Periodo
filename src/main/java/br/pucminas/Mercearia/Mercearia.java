@@ -9,6 +9,7 @@ public class Mercearia {
     ArrayList<Produto> produtos = new ArrayList<Produto>();
     private float lucro = 25;
     private float lucroTotal = 0;
+    private static int index=0;
 
     public Mercearia() {
     }
@@ -52,17 +53,25 @@ public class Mercearia {
     // this.lucroTotal += (getPrecoFinal(produto) - custo);
     // }
 
+    public double getPrecoFinal() {
+        index = App.validaValor(0, (produtos.size()-1));
+        Produto produto = produtos.get(index);
+        return ((produto.getCusto() + produto.getImposto()) * (1 + this.getLucro()));
+    }
+
     public double getPrecoFinal(int index) {
         Produto produto = produtos.get(index);
         return ((produto.getCusto() + produto.getImposto()) * (1 + this.getLucro()));
     }
 
-    public double getProdutoSemImposto(int index) {
+    public double getProdutoSemImposto() {
+         index = App.validaValor(0, (produtos.size()-1));
         Produto produto = produtos.get(index);
         return (produto.getCusto() * (1 + this.getLucro()));
     }
 
-    public double getLucroPorVenda(int index) {
+    public double getLucroPorVenda() {
+         index = App.validaValor(0, produtos.size());        
         Produto produto = produtos.get(index);
         return (this.getPrecoFinal(index) - (produto.getImposto() + produto.getCusto()));
     }
