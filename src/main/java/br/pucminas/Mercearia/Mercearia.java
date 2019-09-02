@@ -8,10 +8,9 @@ import java.util.ArrayList;
 public class Mercearia {
     ArrayList<Produto> produtos = new ArrayList<Produto>();
     private float lucro = 25;
-    private double lucroTotal = 0;
+    private float lucroTotal = 0;
 
     public Mercearia() {
-
     }
 
     /**
@@ -21,9 +20,28 @@ public class Mercearia {
         return (lucro / 100);
     }
 
-    public void adicionaProduto(String nome, float custo, String categoria) {
-        Produto p = new Produto(nome, custo, categoria);
+    public void adicionaProduto(String nome, float custo, int intCategoria) {
+        Produto p = new Produto(nome, custo, validaCategoria(intCategoria));
         produtos.add(p);
+    }
+
+    private String validaCategoria(int intCategoria) {
+        String categoriaValida;
+        switch (intCategoria) {
+        case 1:
+            categoriaValida = "comida";
+            break;
+        case 2:
+            categoriaValida = "bebida";
+            break;
+        case 3:
+            categoriaValida = "material de limpeza";
+            break;
+        default:
+            categoriaValida = "";
+            break;
+        }
+        return categoriaValida;
     }
 
     // FIXME Entender melhor o exercício para refazer este método.
@@ -34,27 +52,31 @@ public class Mercearia {
     // this.lucroTotal += (getPrecoFinal(produto) - custo);
     // }
 
-    public double getPrecoFinal(Produto produto) {
+    public double getPrecoFinal(int index) {
+        Produto produto = produtos.get(index);
         return ((produto.getCusto() + produto.getImposto()) * (1 + this.getLucro()));
     }
 
-    public double getProdutoSemImposto(Produto produto) {
+    public double getProdutoSemImposto(int index) {
+        Produto produto = produtos.get(index);
         return (produto.getCusto() * (1 + this.getLucro()));
     }
 
-    public double getLucroPorVenda(Produto produto) {
-        return (getPrecoFinal(produto) - (produto.getImposto() + produto.getCusto()));
+    public double getLucroPorVenda(int index) {
+        Produto produto = produtos.get(index);
+        return (this.getPrecoFinal(index) - (produto.getImposto() + produto.getCusto()));
     }
 
-    public double getLucroTotal() {
+    public float getLucroTotal() {
         return this.lucroTotal;
     }
 
-    /**
-     * @return the produtos
-     */
-    // TODO Melhorar retorno, tratar melhor da saída
-    public ArrayList<Produto> getProdutos() {
-        return produtos;
+    public String mostraProdutos() {
+        StringBuilder aux = new StringBuilder();
+        for (int i = 0; i < produtos.size(); i++) {
+            aux.append("Produto " + i + ":\n");
+            aux.append(produtos.get(i).getNome());
+        }
+        return aux.toString();
     }
 }

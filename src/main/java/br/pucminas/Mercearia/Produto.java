@@ -7,13 +7,14 @@ public class Produto {
 
     private String nome;
     private float custo;
-    private float imposto;
+    private double imposto;
     private String categoria;
 
     public Produto(String nome, float custo, String categoria) {
         this.nome = nome;
         this.custo = custo;
         this.setImposto(categoria);
+
     }
 
     public void setImposto(String categoria) {
@@ -29,8 +30,9 @@ public class Produto {
         case "material de limpeza":
             this.imposto = Categoria.MATERIALLIMPEZA.getImposto();
             this.categoria = Categoria.MATERIALLIMPEZA.getDescricao();
+            break;
         default:
-            this.imposto = 0;
+            this.imposto = 1000000;
             break;
         }
     }
@@ -52,8 +54,8 @@ public class Produto {
     /**
      * @return the imposto
      */
-    public float getImposto() {
-        return this.imposto;
+    public double getImposto() {
+        return this.custo * imposto;
     }
 
     /**
