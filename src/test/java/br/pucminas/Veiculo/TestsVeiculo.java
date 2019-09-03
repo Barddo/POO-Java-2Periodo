@@ -12,24 +12,24 @@ public class TestsVeiculo {
 
     @Test
     public void testaMovimentoGasolina() {
-        Veiculo vei = new Veiculo(true);
+        Veiculo vei = new Veiculo(true, 50);
         vei.getTanqueCombustivel();
         vei.getDistanciaPercorrida();
         vei.anda(30);
         vei.getTanqueCombustivel();
         vei.getDistanciaPercorrida();
-        assertEquals(47, vei.getTanqueCombustivel(),0.00001);
+        assertEquals(47, vei.getTanqueCombustivel(), 0.00001);
     }
 
     @Test
     public void testaMovimentoAlcool() {
-        Veiculo vei = new Veiculo(false);
+        Veiculo vei = new Veiculo(true, 50);
         vei.getTanqueCombustivel();
         vei.getDistanciaPercorrida();
         vei.anda(30);
         vei.getTanqueCombustivel();
         vei.getDistanciaPercorrida();
-        assertEquals(45.716, vei.getTanqueCombustivel(),0.00001);
+        assertEquals(45.716, vei.getTanqueCombustivel(), 0.00001);
     }
 
 }
