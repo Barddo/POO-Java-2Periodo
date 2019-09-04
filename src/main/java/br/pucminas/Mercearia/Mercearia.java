@@ -45,14 +45,6 @@ public class Mercearia {
         return categoriaValida;
     }
 
-    // FIXME Entender melhor o exercício para refazer este método.
-
-    // public void vendeProduto() {
-    // Object[] arrProdutos = this.produtos.toArray();
-    // produtos.forEach();
-    // this.lucroTotal += (getPrecoFinal(produto) - custo);
-    // }
-
     public double getPrecoFinal() {
         index = App.validaValor(0, (produtos.size()-1));
         Produto produto = produtos.get(index);
