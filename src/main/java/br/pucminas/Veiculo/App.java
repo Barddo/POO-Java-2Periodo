@@ -8,18 +8,18 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello Java");
+        Scanner in = new Scanner(System.in);
         DecimalFormat decimalFormat = new DecimalFormat("#00.00");
         System.out.println("1 - Gasolina\n2- Alcool");
         int tipoCombustivel = validaValor(1, 2);
 
         System.out.println("Digite o tamanho do tanque de cobustível - 40 a 50 litros");
-        double tamanhoCombust = App.read();
+        double tamanhoCombust = validaValor(40, 50);
         Veiculo mustang = new Veiculo(tipoCombustivel == 1 ? true : false, tamanhoCombust);
         int loop = 1;
         while (loop != 0) {
             menu();
-            loop = validaValor(0, 5);
+            loop = validaValor(0, 4);
             switch (loop) {
             case 0:
                 System.exit(0);
@@ -27,6 +27,11 @@ public class App {
             case 1:
                 System.out.println("Digite a distância:");
                 mustang.deslocar(App.read());
+                if (mustang.alerta()) {
+                    System.out.println("Tanque em reserva");
+                    System.out.println("Digite algo para prosseguir");
+                    in.next();
+                }
                 break;
             case 2:
                 System.out.println("Digite quanto deseja abastecer:");
@@ -35,18 +40,21 @@ public class App {
             case 3:
                 System.out.println("Há " + decimalFormat.format(mustang.getTanqueCombustivel()) + " litros " + "de "
                         + mustang.getTipoCombustivel());
+                System.out.println("Digite algo para prosseguir");
+                in.next();
                 break;
             case 4:
                 System.out.println("Super Mustang 68 vermelho fosco V8 percorreu "
                         + decimalFormat.format(mustang.getDistanciaPercorrida()) + "Km");
+                System.out.println("Digite algo para prosseguir");
+                in.next();
                 break;
             default:
                 System.out.println("Opção inválida");
+                System.out.println("Digite algo para prosseguir");
+                in.next();
                 break;
             }
-            System.out.println("Digite algo para prosseguir");
-            Scanner in = new Scanner(System.in);
-            in.next();
         }
     }
 
@@ -88,7 +96,7 @@ public class App {
         System.out.println("0 - Sair");
         System.out.println("1 - Andar");
         System.out.println("2 - Abastecer");
-        System.out.println("3 - Exibir informações");
+        System.out.println("3 - Exibir combustível");
         System.out.println("4 - Exibir distância percorrida");
         System.out.println("Digite a opção desejada");
     }

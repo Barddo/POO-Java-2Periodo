@@ -26,12 +26,17 @@ public class Veiculo {
     }
 
     public void deslocar(double distancia) {
-        this.distanciaPercorrida += distancia > 0 ? distancia : 0;
-        if (this.gasolina) {
-            this.tanqueCombustivel -= distancia *= 0.1000;
-        } else {
-            this.tanqueCombustivel -= distancia *= 0.1428;
+        double acumulador = 0;
+        if (distancia > 0) {
+            acumulador += distancia;
         }
+        this.distanciaPercorrida += acumulador;
+        if (this.gasolina) {
+            this.tanqueCombustivel -= acumulador *= 0.1000;
+        } else {
+            this.tanqueCombustivel -= acumulador *= 0.1428;
+        }
+        validaTanque();
     }
 
     public boolean abasteceTanque(double litros) {
@@ -67,11 +72,17 @@ public class Veiculo {
         }
     }
 
-    private String validaTanque() {
+    public boolean alerta() {
         if (getTanqueCombustivel() < 5) {
-            return "Tanque em reserva";
+            return true;
         }
-        return "";
+        return false;
+    }
+
+    private void validaTanque() {
+        if (this.tanqueCombustivel <= 0) {
+            this.tanqueCombustivel = 0;
+        }
     }
 
     /**
