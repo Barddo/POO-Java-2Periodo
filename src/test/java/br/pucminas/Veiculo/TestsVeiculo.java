@@ -1,7 +1,6 @@
 package br.pucminas.Veiculo;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -15,7 +14,7 @@ public class TestsVeiculo {
         Veiculo vei = new Veiculo(true, 50);
         vei.getTanqueCombustivel();
         vei.getDistanciaPercorrida();
-        vei.anda(30);
+        vei.deslocar(30);
         vei.getTanqueCombustivel();
         vei.getDistanciaPercorrida();
         assertEquals(47, vei.getTanqueCombustivel(), 0.00001);
@@ -26,7 +25,7 @@ public class TestsVeiculo {
         Veiculo vei = new Veiculo(true, 50);
         vei.getTanqueCombustivel();
         vei.getDistanciaPercorrida();
-        vei.anda(30);
+        vei.deslocar(30);
         vei.getTanqueCombustivel();
         vei.getDistanciaPercorrida();
         assertEquals(45.716, vei.getTanqueCombustivel(), 0.00001);

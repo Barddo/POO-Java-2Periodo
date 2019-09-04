@@ -8,26 +8,38 @@ public class Veiculo {
     private boolean gasolina = true;
     private double tanqueCombustivel;
     private double distanciaPercorrida;
-    private int tamanhoTanque;
+    private double tamanhoTanque;
 
-    public Veiculo(boolean gasolina, int tamanhoTanque) {
+    public Veiculo(boolean gasolina, double tamanhoTanque) {
         this.init(gasolina, tamanhoTanque);
     }
 
-    private void init(boolean gasolina, int tamanhoTanque) {
+    private void init(boolean gasolina, double tamanhoTanque) {
         this.gasolina = gasolina;
         this.distanciaPercorrida = 0;
-        if (tamanhoTanque < 40 || tamanhoTanque > 50) {
+        if (tamanhoTanque >= 40 && tamanhoTanque <= 50) {
             this.tamanhoTanque = tamanhoTanque;
         } else {
             this.tamanhoTanque = 40;
         }
-        this.tanqueCombustivel = this.tamanhoTanque;
+        setTanqueCombustivel(this.tamanhoTanque);
     }
 
-    public void anda(float distancia) {
-        this.distanciaPercorrida += distancia;
-        this.validaDistancia(distancia);
+    public void deslocar(double distancia) {
+        this.distanciaPercorrida += distancia > 0 ? distancia : 0;
+        if (this.gasolina) {
+            this.tanqueCombustivel -= distancia *= 0.1000;
+        } else {
+            this.tanqueCombustivel -= distancia *= 0.1428;
+        }
+    }
+
+    public boolean abasteceTanque(double litros) {
+        boolean ehValido = litros < tamanhoTanque || litros > 0;
+        double acc = 0;
+        acc += ehValido ? litros : 0;
+        setTanqueCombustivel(acc);
+        return ehValido;
     }
 
     /**
@@ -36,26 +48,39 @@ public class Veiculo {
     public double getDistanciaPercorrida() {
         return distanciaPercorrida;
     }
-    
+
     /**
      * @return the tanqueCombustivel
      */
     public double getTanqueCombustivel() {
-        return tanqueCombustivel;
+        return this.tanqueCombustivel;
     }
 
-    public String validaTanque() {
-        if (this.tanqueCombustivel < 5) {
+    /**
+     * @return se é gasolina ou alcool
+     */
+    public String getTipoCombustivel() {
+        if (this.gasolina) {
+            return "Gasolina";
+        } else {
+            return "Alcool";
+        }
+    }
+
+    private String validaTanque() {
+        if (getTanqueCombustivel() < 5) {
             return "Tanque em reserva";
         }
         return "";
     }
 
-    public void validaDistancia(double dist) {
-        if (this.gasolina) {
-            this.tanqueCombustivel -= (dist *= 0.1000);
-        } else {
-            this.tanqueCombustivel -= (dist *= 0.1428);
+    /**
+     * @param tanqueCombustivel the tanqueCombustivel to set
+     */
+    public void setTanqueCombustivel(double tanqueCombustivel) {
+        this.tanqueCombustivel = tanqueCombustivel;
+        if (this.tanqueCombustivel < 0) {
+            this.tanqueCombustivel = 0;
         }
     }
 }

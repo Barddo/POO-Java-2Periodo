@@ -108,7 +108,7 @@ public class App {
 
     public static void menu() {
         System.out.print("\033\143");
-        System.out.println("Super Ultra Relogio 3000");
+        System.out.println("Super Mercearia Don't Tread On Me\nUnidade São Gabriel");
         System.out.println("0 - Sair");
         System.out.println("1 - Adiciona produto");
         System.out.println("2 - Preço final do produto");
