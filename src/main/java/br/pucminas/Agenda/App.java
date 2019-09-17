@@ -4,25 +4,56 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.GregorianCalendar;
+import java.util.Scanner;
+
+import br.pucminas.Mercearia.Mercearia;
 
 public class App {
-    public static void main(String[] args) {
-        Agenda a;
-        a = new Agenda();
+    public static void main(String[] args) throws IOException {
+        Agenda agenda;
+        agenda = new Agenda();
 
-        Contato cb;
-        cb = new Contato("Teste", new GregorianCalendar(1980, 10, 28));
-        cb.setTelefone(new Telefone("3333-5555", "Telefone residencial"));
-        cb.setTelefone(new Telefone("99111-1111", "Telefone celular"));
-        a.inserir(cb);
+        // Contato cb;
+        // cb = new Contato("Teste", new GregorianCalendar(1980, 10, 28));
+        // cb.setTelefone(new Telefone("3333-5555", "Telefone residencial"));
+        // cb.setTelefone(new Telefone("99111-1111", "Telefone celular"));
+        // agenda.inserir(cb);
+        int loop = 1;
+        while (loop != 0) {
+            menu();
+            loop = validaEntrada(0, 5);
+            switch (loop) {
+            case 0:
+                System.exit(0);
+                break;
+            case 1:
+                int repeteDias = 0;
+                int vezes = 0;
+                System.out.println("Digite o nome do compromisso");
+                String nome = readLine();
+                int dia = readInt("Digite o dia");
+                int mes = readInt("Digite o mes");
+                int ano = readInt("Digite o ano");
+                System.out.println("O compromisso se repete?");
+                int repete = validaEntrada(0, 1);
+                if (repete == 1) {
+                    repeteDias = readInt("De quanto em quantos dias?");
+                    vezes = readInt("Quantas vezes o compromisso se repetirá?");
 
-        ContatoBasico obj = a.buscar("Teste"); // pesquisa por nome
-
-        if (obj != null) {
-            System.out.println(obj.getDados());
-            // mostraDados(obj);
-        } else
-            System.out.println("Contato nao encontrado!");
+                }
+                agenda.adicionaCompromisso(nome, dia, mes, ano, repeteDias, vezes);
+                break;
+            case 2:
+                System.out.println(agenda.imprimeCompromissos());
+                break;
+            default:
+                System.out.println("Opção inválida");
+                break;
+            }
+            System.out.println("Digite algo para prosseguir");
+            Scanner in = new Scanner(System.in);
+            in.next();
+        }
     }
 
     public static String readLine() throws IOException {
@@ -33,10 +64,10 @@ public class App {
 
     public static void menu() {
         System.out.print("\033\143");
-        System.out.println("Super Ultra Relogio 3000");
+        System.out.println("Agenda");
         System.out.println("0 - Sair");
-        System.out.println("1 - Ajuste Hora");
-        System.out.println("2 - Ajuste Data");
+        System.out.println("1 - Adiciona Compromisso");
+        System.out.println("2 - Exibir compromissos");
         System.out.println("3 - passar tempo ");
         System.out.println("4 - Exibir data e hora atual");
         System.out.println("5 - Reiniciar");
@@ -62,18 +93,18 @@ public class App {
         return numero;
     }
 
-    public static int validaEntrada() {
+    public static int validaEntrada(int menor, int maior) {
         String operacao;
         int numOperador = 0;
         try {
             operacao = App.readLine();
             numOperador = Integer.parseInt(operacao);
-            if (numOperador < 0 || numOperador > 7) {
+            if (numOperador < menor || numOperador > maior) {
                 throw new Exception();
             }
         } catch (Exception e) {
             System.out.println("Entrada inválida, digite novamente:");
-            numOperador = validaEntrada();
+            numOperador = validaEntrada(menor, maior);
         }
         return numOperador;
     }
