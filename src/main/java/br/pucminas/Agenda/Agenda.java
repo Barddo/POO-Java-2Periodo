@@ -1,12 +1,15 @@
 package br.pucminas.Agenda;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * Agenda
  */
 public class Agenda {
     private ArrayList<ContatoBasico> contatos;
+    protected ArrayList<Compromisso> compromissos;
 
     Agenda() {
         contatos = new ArrayList<ContatoBasico>();
@@ -14,6 +17,37 @@ public class Agenda {
 
     public void inserir(ContatoBasico c) {
         contatos.add(c);
+    }
+
+    public void adicionaCompromisso(String nome, int dia, int mes, int ano, int repeticaoDias, int vezes) {
+        Compromisso compromisso = new Compromisso(nome, dia, mes, ano);
+        compromissos.add(compromisso);
+        Calendar cal = new GregorianCalendar();
+        cal.set(Calendar.DATE, dia);
+        cal.set(Calendar.MONTH, mes);
+        cal.set(Calendar.YEAR, ano);
+        if (repeticaoDias != 0) {
+            for (int i = 0; i < vezes; i++) {
+                cal.roll(Calendar.DATE, repeticaoDias);
+                compromissos.add(
+                        new Compromisso(nome, cal.get(Calendar.DATE), cal.get(Calendar.MONTH), cal.get(Calendar.YEAR)));
+            }
+        }
+    }
+
+    public void adicionaCompromisso(String nome, int dia, int mes, int ano) {
+        Compromisso compromisso = new Compromisso(nome, dia, mes, ano);
+        compromissos.add(compromisso);
+    }
+
+    public String imprimeCompromissos() {
+        StringBuilder aux = new StringBuilder();
+        int i = 0;
+        while (compromissos.iterator().hasNext()) {
+            aux.append(compromissos.get(i).toString());
+            i++;
+        }
+        return aux.toString();
     }
 
     public ContatoBasico buscar(String nome) {
