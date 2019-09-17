@@ -32,12 +32,12 @@ public class Agenda {
         return null;
     }
 
-    public Contato[] buscarGeral(String palavraChave) {
+    public Contato[] buscarTodos(String palavraChave) {
         ArrayList<ContatoBasico> todos = new ArrayList<ContatoBasico>();
         for (int i = 0; i < contatos.size(); i++) {
-            ContatoBasico c = contatos.get(i);
-            if (c.getDados().contains(palavraChave))
-                todos.add(c);
+            ContatoBasico contato = contatos.get(i);
+            if (contato.getDados().contains(palavraChave))
+                todos.add(contato);
         }
         Contato[] vet = new Contato[todos.size()];
 
