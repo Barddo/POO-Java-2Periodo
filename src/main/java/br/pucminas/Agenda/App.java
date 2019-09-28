@@ -3,21 +3,12 @@ package br.pucminas.Agenda;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.GregorianCalendar;
 import java.util.Scanner;
-
-import br.pucminas.Mercearia.Mercearia;
 
 public class App {
     public static void main(String[] args) throws IOException {
         Agenda agenda;
         agenda = new Agenda();
-
-        // Contato cb;
-        // cb = new Contato("Teste", new GregorianCalendar(1980, 10, 28));
-        // cb.setTelefone(new Telefone("3333-5555", "Telefone residencial"));
-        // cb.setTelefone(new Telefone("99111-1111", "Telefone celular"));
-        // agenda.inserir(cb);
         int loop = 1;
         while (loop != 0) {
             menu();
