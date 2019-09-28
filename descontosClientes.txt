@@ -1,0 +1,5 @@
+Cliente João dos Santos. Valor com Desconto 1275.0
+Cliente Maria da Silva. Valor com Desconto 1190.0
+Cliente Pedro de Souza. Valor com Desconto 1520.0
+Cliente Ana de Assis. Valor com Desconto 2160.0
+Cliente Paulo de Almeida. Valor com Desconto 1445.0
