@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - App",
+            "request": "launch",
+            "mainClass": "br.aceleradev.charles.App",
+            "projectName": "PUC-MG"
+        },
+        {
+            "type": "java",
             "name": "Agenda",
             "request": "launch",
             "mainClass": "br.pucminas.Agenda.App",
