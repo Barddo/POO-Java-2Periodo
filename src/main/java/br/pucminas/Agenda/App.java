@@ -30,7 +30,6 @@ public class App {
                 if (repete == 1) {
                     repeteDias = readInt("De quanto em quantos dias?");
                     vezes = readInt("Quantas vezes o compromisso se repetirá?");
-
                 }
                 agenda.adicionaCompromisso(nome, dia, mes, ano, repeteDias, vezes);
                 break;

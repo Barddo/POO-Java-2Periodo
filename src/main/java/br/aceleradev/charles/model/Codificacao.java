@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.Writer;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
@@ -20,15 +21,22 @@ import org.json.JSONObject;
  */
 public class Codificacao {
 
-    private String token = "51a6e418c369a7c376c178e4c5a7eaca4a4add7b";
+    private String token = "locked";
     private String path = "/home/charl3ff/Music/answer.json";
     private String url = "https://api.codenation.dev/v1/challenge/dev-ps/generate-data?token=" + token;
     JSONObject json;
 
     public Codificacao() throws JSONException, IOException {
-        json = this.readJsonFromUrl();
+        ///////// Lê a API do AceleraDev
+        // json = this.readJsonFromUrl();
+        ///////// Cria o JSON
+        json = new JSONObject();
+        json.put("numero_casas", 7);
+        json.put("token", token);
+        json.put("cifrado",
+                "lclyf ipn jvtwbapun kpzhzaly ohz jvtl myvt ahrpun avv thuf pklhz huk wbaapun aolt pu vul wshjl. nvykvu ilss");
         String decodificado = this.decodifica(json.get("cifrado").toString());
-        String sha1= null;
+        String sha1 = null;
         try {
             sha1 = this.geraSha1(decodificado);
         } catch (NoSuchAlgorithmException e) {
@@ -41,7 +49,9 @@ public class Codificacao {
 
     public void salvaJSON(JSONObject json) {
         try {
-            json.write(new FileWriter(new File(path))).append(json.toString()).close();
+            FileWriter fw = new FileWriter(new File(path));
+            fw.write(json.toString());
+            fw.close();
         } catch (JSONException e) {
             System.err.println("JSON Expection");
             e.printStackTrace();
@@ -83,27 +93,18 @@ public class Codificacao {
     }
 
     public String decodifica(String textoCodificado) {
-        int asciiConstant = 32;
-        int biggerUpperCase = 90;
         int numero_casas = 7;
-        int numeroAlfabeto = 26;
         StringBuilder aux = new StringBuilder();
-        char alphabet;
         for (int i = 0; i < textoCodificado.length(); i++) {
-            alphabet = textoCodificado.charAt(i);
-            if (Character.isLetter(alphabet)) {
-                if (Character.isUpperCase(alphabet) && alphabet > (biggerUpperCase - numero_casas)) {
-                    alphabet = (char) ((alphabet - numeroAlfabeto) + numero_casas);
-                } else {
-                    if (Character.isLowerCase(alphabet)
-                            && alphabet > ((biggerUpperCase + asciiConstant) - numero_casas)) {
-                        alphabet = (char) ((alphabet - numeroAlfabeto) + numero_casas);
-                    }
-                }
-                aux.append(textoCodificado.replace(alphabet, (char) (alphabet + numero_casas)).charAt(i));
+            char c = textoCodificado.charAt(i);
+            if (97 <= c && c < 123) {
+                c = (char) ((c - numero_casas + 7) % 26 + 97);
+            } else if (65 <= c && c < 91) {
+                c = ((char) ((c - numero_casas + 13) % 26 + 65));
             } else {
-                aux.append(alphabet);
+                c = (textoCodificado.charAt(i));
             }
+            aux.append(c);
         }
         return aux.toString();
     }
