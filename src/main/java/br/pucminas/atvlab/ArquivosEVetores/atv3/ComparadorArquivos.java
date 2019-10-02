@@ -10,7 +10,7 @@ import java.util.Scanner;
  * ComparadorArquivos
  */
 public class ComparadorArquivos {
-    private int tamanhoArr = 20;
+    private final int tamanhoArr = 20;
     private int iguais = 0;
 
     public ComparadorArquivos() {
@@ -19,11 +19,11 @@ public class ComparadorArquivos {
 
     public int[] leArquivo(String prefix) throws IOException {
         int[] ints = new int[tamanhoArr];
-        Object[] params = new Object[] { prefix };
+        Object[] params = new Object[]{prefix};
         String fileName = MessageFormat.format(".\\src\\main\\java\\atvlab\\atv3\\sequencia{0}.txt", params);
         Scanner in = new Scanner(new FileReader(fileName));
         int index = 0;
-        String line = null;
+        String line;
         while (in.hasNext()) {
             line = in.nextLine();
             ints[index] = Integer.parseInt(line);

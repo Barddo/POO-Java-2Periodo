@@ -3,11 +3,12 @@ package br.pucminas.Calculadora;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Objects;
 
 public class App {
     public static void main(String[] args) throws IOException {
         Calculadora calc = new Calculadora();
-        String loop = "";
+        String loop;
         boolean op = true;
         do {
             calc.LerNumeros(calc.readInt("Entre com o primeiro número"), calc.readInt("Entre com o segundo número"));
@@ -15,7 +16,7 @@ public class App {
             System.out.println("Digite algo para prosseguir.");
             System.out.println("Caso deseje sair, digite 0");
             loop = App.readLine();
-            if (loop == "0") {
+            if (Objects.equals(loop, "0")) {
                 op = false;
             }
         } while (op);

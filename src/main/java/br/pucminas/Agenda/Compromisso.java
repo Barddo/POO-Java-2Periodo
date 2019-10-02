@@ -7,8 +7,8 @@ import java.util.GregorianCalendar;
  * Compromisso
  */
 public class Compromisso {
+    final Calendar data = new GregorianCalendar();
     private String nome;
-    Calendar data = new GregorianCalendar();
 
     public Compromisso(String nome) {
         this.nome = nome;
@@ -23,16 +23,16 @@ public class Compromisso {
         return this.nome;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public Calendar getData() {
         return this.data;
     }
 
     public void setData(int day, int month, int year) {
         this.data.set(year, month, day);
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public Compromisso nome(String nome) {

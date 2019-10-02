@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 abstract public class ContatoBasico {
     protected String nome;
-    protected ArrayList<Telefone> telefones;
+    protected final ArrayList<Telefone> telefones;
 
     public ContatoBasico() {
         nome = "";

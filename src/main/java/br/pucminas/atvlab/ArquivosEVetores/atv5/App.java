@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -48,7 +49,7 @@ public class App {
             e.printStackTrace();
             System.err.println("Acesso indisponível");
         } finally {
-            in.close();
+            Objects.requireNonNull(in).close();
         }
         return nums;
     }

@@ -13,6 +13,6 @@ public final class App {
         for (int i = 0; i < ints.length; i++) {
             System.out.println(ints[i]);
         }
-        System.out.println("Número de valores iguais: "+ ca.getIguais());
+        System.out.println("Número de valores iguais: " + ca.getIguais());
     }
 }

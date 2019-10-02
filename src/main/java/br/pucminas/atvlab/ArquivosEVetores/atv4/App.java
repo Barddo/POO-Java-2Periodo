@@ -2,6 +2,7 @@ package br.pucminas.atvlab.ArquivosEVetores.atv4;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -37,30 +38,30 @@ public class App {
             e.printStackTrace();
             System.err.println("Acesso indisponível");
         } finally {
-            in.close();
+            Objects.requireNonNull(in).close();
         }
     }
 
     public static void decodificaVotos(Urna urna) {
         for (int i = 0; i < urna.getVotos().length; i++) {
             switch (urna.getVotosPorPosicao(i).getEscolha()) {
-            case 1:
-                urna.qntVotos[1]++;
-                break;
-            case 2:
-                urna.qntVotos[2]++;
-                break;
-            case 3:
-                urna.qntVotos[3]++;
-                break;
-            case 4:
-                urna.qntVotos[4]++;
-                break;
-            case 5:
-                urna.qntVotos[5]++;
-                break;
-            default:
-                break;
+                case 1:
+                    urna.qntVotos[1]++;
+                    break;
+                case 2:
+                    urna.qntVotos[2]++;
+                    break;
+                case 3:
+                    urna.qntVotos[3]++;
+                    break;
+                case 4:
+                    urna.qntVotos[4]++;
+                    break;
+                case 5:
+                    urna.qntVotos[5]++;
+                    break;
+                default:
+                    break;
             }
         }
     }

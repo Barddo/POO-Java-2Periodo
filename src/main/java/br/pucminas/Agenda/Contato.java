@@ -3,7 +3,7 @@ package br.pucminas.Agenda;
 import java.util.Calendar;
 
 public class Contato extends ContatoBasico {
-    protected Calendar dataNascimento;
+    protected final Calendar dataNascimento;
 
     public Contato(String nome, Calendar dataNascimento) {
         super(nome);
@@ -13,7 +13,7 @@ public class Contato extends ContatoBasico {
     @Override
     public String getDados() {
         return super.getDados() + "Nascido em " + dataNascimento.get(Calendar.DATE) + "/"
-                + dataNascimento.get(Calendar.MONTH) + "/" + dataNascimento.get(Calendar.YEAR) + "\nIdade: ";
+            + dataNascimento.get(Calendar.MONTH) + "/" + dataNascimento.get(Calendar.YEAR) + "\nIdade: ";
     }
 
 }

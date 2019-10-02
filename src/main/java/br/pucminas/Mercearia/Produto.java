@@ -5,8 +5,8 @@ package br.pucminas.Mercearia;
  */
 public class Produto {
 
-    private String nome;
-    private float custo;
+    private final String nome;
+    private final float custo;
     private double imposto;
     private String categoria;
 
@@ -15,26 +15,6 @@ public class Produto {
         this.custo = custo;
         this.setImposto(categoria);
 
-    }
-
-    public void setImposto(String categoria) {
-        switch (categoria.toLowerCase()) {
-        case "comida":
-            this.imposto = Categoria.COMIDA.getImposto();
-            this.categoria = Categoria.COMIDA.getDescricao();
-            break;
-        case "bebida":
-            this.imposto = Categoria.BEBIDA.getImposto();
-            this.categoria = Categoria.BEBIDA.getDescricao();
-            break;
-        case "material de limpeza":
-            this.imposto = Categoria.MATERIALLIMPEZA.getImposto();
-            this.categoria = Categoria.MATERIALLIMPEZA.getDescricao();
-            break;
-        default:
-            this.imposto = 1000000;
-            break;
-        }
     }
 
     /**
@@ -56,6 +36,26 @@ public class Produto {
      */
     public double getImposto() {
         return this.custo * imposto;
+    }
+
+    public void setImposto(String categoria) {
+        switch (categoria.toLowerCase()) {
+            case "comida":
+                this.imposto = Categoria.COMIDA.getImposto();
+                this.categoria = Categoria.COMIDA.getDescricao();
+                break;
+            case "bebida":
+                this.imposto = Categoria.BEBIDA.getImposto();
+                this.categoria = Categoria.BEBIDA.getDescricao();
+                break;
+            case "material de limpeza":
+                this.imposto = Categoria.MATERIALLIMPEZA.getImposto();
+                this.categoria = Categoria.MATERIALLIMPEZA.getDescricao();
+                break;
+            default:
+                this.imposto = 1000000;
+                break;
+        }
     }
 
     /**

@@ -8,8 +8,8 @@ import java.util.GregorianCalendar;
  * Agenda
  */
 public class Agenda {
-    private ArrayList<ContatoBasico> contatos;
     protected ArrayList<Compromisso> compromissos;
+    private final ArrayList<ContatoBasico> contatos;
 
     Agenda() {
         contatos = new ArrayList<ContatoBasico>();
@@ -30,7 +30,7 @@ public class Agenda {
             for (int i = 0; i < vezes; i++) {
                 cal.roll(Calendar.DATE, repeticaoDias);
                 compromissos.add(
-                        new Compromisso(nome, cal.get(Calendar.DATE), cal.get(Calendar.MONTH), cal.get(Calendar.YEAR)));
+                    new Compromisso(nome, cal.get(Calendar.DATE), cal.get(Calendar.MONTH), cal.get(Calendar.YEAR)));
             }
         }
     }

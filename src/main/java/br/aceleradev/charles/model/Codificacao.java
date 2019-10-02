@@ -1,32 +1,24 @@
 package br.aceleradev.charles.model;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.Writer;
-import java.net.URL;
-import java.nio.charset.Charset;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.*;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * codificacao
  */
 public class Codificacao {
 
-    private String token = "locked";
-    private String path = "/home/charl3ff/Music/answer.json";
-    private String url = "https://api.codenation.dev/v1/challenge/dev-ps/generate-data?token=" + token;
-    JSONObject json;
+    final JSONObject json;
+    private final String token = "locked";
+    private final String url = "https://api.codenation.dev/v1/challenge/dev-ps/generate-data?token=" + token;
 
-    public Codificacao() throws JSONException, IOException {
+    public Codificacao() throws JSONException {
         ///////// Lê a API do AceleraDev
         // json = this.readJsonFromUrl();
         ///////// Cria o JSON
@@ -34,7 +26,7 @@ public class Codificacao {
         json.put("numero_casas", 7);
         json.put("token", token);
         json.put("cifrado",
-                "lclyf ipn jvtwbapun kpzhzaly ohz jvtl myvt ahrpun avv thuf pklhz huk wbaapun aolt pu vul wshjl. nvykvu ilss");
+            "lclyf ipn jvtwbapun kpzhzaly ohz jvtl myvt ahrpun avv thuf pklhz huk wbaapun aolt pu vul wshjl. nvykvu ilss");
         String decodificado = this.decodifica(json.get("cifrado").toString());
         String sha1 = null;
         try {
@@ -49,6 +41,7 @@ public class Codificacao {
 
     public void salvaJSON(JSONObject json) {
         try {
+            String path = "/home/charl3ff/Music/answer.json";
             FileWriter fw = new FileWriter(new File(path));
             fw.write(json.toString());
             fw.close();
@@ -73,7 +66,7 @@ public class Codificacao {
     public JSONObject readJsonFromUrl() throws IOException, JSONException {
         InputStream is = new URL(this.url).openStream();
         try {
-            BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+            BufferedReader rd = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
             String jsonText = readAll(rd);
             JSONObject json = new JSONObject(jsonText);
             return json;

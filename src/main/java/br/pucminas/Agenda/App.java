@@ -10,35 +10,35 @@ public class App {
         Agenda agenda;
         agenda = new Agenda();
         int loop = 1;
-        while (loop != 0) {
+        while (true) {
             menu();
             loop = validaEntrada(0, 5);
             switch (loop) {
-            case 0:
-                System.exit(0);
-                break;
-            case 1:
-                int repeteDias = 0;
-                int vezes = 0;
-                System.out.println("Digite o nome do compromisso");
-                String nome = readLine();
-                int dia = readInt("Digite o dia");
-                int mes = readInt("Digite o mes");
-                int ano = readInt("Digite o ano");
-                System.out.println("O compromisso se repete?");
-                int repete = validaEntrada(0, 1);
-                if (repete == 1) {
-                    repeteDias = readInt("De quanto em quantos dias?");
-                    vezes = readInt("Quantas vezes o compromisso se repetirá?");
-                }
-                agenda.adicionaCompromisso(nome, dia, mes, ano, repeteDias, vezes);
-                break;
-            case 2:
-                System.out.println(agenda.imprimeCompromissos());
-                break;
-            default:
-                System.out.println("Opção inválida");
-                break;
+                case 0:
+                    System.exit(0);
+                    break;
+                case 1:
+                    int repeteDias = 0;
+                    int vezes = 0;
+                    System.out.println("Digite o nome do compromisso");
+                    String nome = readLine();
+                    int dia = readInt("Digite o dia");
+                    int mes = readInt("Digite o mes");
+                    int ano = readInt("Digite o ano");
+                    System.out.println("O compromisso se repete?");
+                    int repete = validaEntrada(0, 1);
+                    if (repete == 1) {
+                        repeteDias = readInt("De quanto em quantos dias?");
+                        vezes = readInt("Quantas vezes o compromisso se repetirá?");
+                    }
+                    agenda.adicionaCompromisso(nome, dia, mes, ano, repeteDias, vezes);
+                    break;
+                case 2:
+                    System.out.println(agenda.imprimeCompromissos());
+                    break;
+                default:
+                    System.out.println("Opção inválida");
+                    break;
             }
             System.out.println("Digite algo para prosseguir");
             Scanner in = new Scanner(System.in);
@@ -69,7 +69,7 @@ public class App {
     public static int readInt(String textoSaida) {
         System.out.println(textoSaida);
         String operacao;
-        int numero = 0;
+        int numero;
         try {
             operacao = App.readLine();
             numero = Integer.parseInt(operacao);
@@ -85,7 +85,7 @@ public class App {
 
     public static int validaEntrada(int menor, int maior) {
         String operacao;
-        int numOperador = 0;
+        int numOperador;
         try {
             operacao = App.readLine();
             numOperador = Integer.parseInt(operacao);

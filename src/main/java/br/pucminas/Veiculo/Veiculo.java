@@ -32,19 +32,18 @@ public class Veiculo {
         }
         this.distanciaPercorrida += acumulador;
         if (this.gasolina) {
-            this.tanqueCombustivel -= acumulador *= 0.1000;
+            this.tanqueCombustivel -= acumulador * 0.1000;
         } else {
-            this.tanqueCombustivel -= acumulador *= 0.1428;
+            this.tanqueCombustivel -= acumulador * 0.1428;
         }
         validaTanque();
     }
 
-    public boolean abasteceTanque(double litros) {
+    public void abasteceTanque(double litros) {
         boolean ehValido = litros < tamanhoTanque || litros > 0;
         double acc = 0;
         acc += ehValido ? litros : 0;
         setTanqueCombustivel(acc);
-        return ehValido;
     }
 
     /**
@@ -62,6 +61,16 @@ public class Veiculo {
     }
 
     /**
+     * @param tanqueCombustivel the tanqueCombustivel to set
+     */
+    public void setTanqueCombustivel(double tanqueCombustivel) {
+        this.tanqueCombustivel = tanqueCombustivel;
+        if (this.tanqueCombustivel < 0) {
+            this.tanqueCombustivel = 0;
+        }
+    }
+
+    /**
      * @return se é gasolina ou alcool
      */
     public String getTipoCombustivel() {
@@ -73,24 +82,11 @@ public class Veiculo {
     }
 
     public boolean alerta() {
-        if (getTanqueCombustivel() < 5) {
-            return true;
-        }
-        return false;
+        return getTanqueCombustivel() < 5;
     }
 
     private void validaTanque() {
         if (this.tanqueCombustivel <= 0) {
-            this.tanqueCombustivel = 0;
-        }
-    }
-
-    /**
-     * @param tanqueCombustivel the tanqueCombustivel to set
-     */
-    public void setTanqueCombustivel(double tanqueCombustivel) {
-        this.tanqueCombustivel = tanqueCombustivel;
-        if (this.tanqueCombustivel < 0) {
             this.tanqueCombustivel = 0;
         }
     }

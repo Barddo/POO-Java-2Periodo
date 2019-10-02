@@ -1,19 +1,15 @@
 package br.pucminas.atvlab.ArquivosEVetores.atv2;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 /**
  * Atividade 2
  */
 public class GeradorRelatorio {
-    private String[] nomes;
-    private double[] valoresCompra;
-    private int tamanhoArr;
+    private final String[] nomes;
+    private final double[] valoresCompra;
+    private final int tamanhoArr;
 
     public GeradorRelatorio() {
         tamanhoArr = 5;
@@ -24,8 +20,8 @@ public class GeradorRelatorio {
     public void leVendas() throws IOException {
         Scanner in = new Scanner(new FileReader(".\\src\\main\\java\\atvlab\\atv2\\vendasClientes.txt"));
         int index = 0;
-        String[] dadosClientes = null;
-        String line = null;
+        String[] dadosClientes;
+        String line;
         while (in.hasNext()) {
             line = in.nextLine();
             dadosClientes = line.split("-");
@@ -38,7 +34,7 @@ public class GeradorRelatorio {
     }
 
     public void geraRelatorioVendas() throws IOException {
-        BufferedWriter writer = null;
+        BufferedWriter writer;
         String nomeArquivoSaida = "descontosClientes.txt";
         writer = new BufferedWriter(new FileWriter(new File(nomeArquivoSaida)));
         for (int i = 0; i < this.tamanhoArr; i++) {

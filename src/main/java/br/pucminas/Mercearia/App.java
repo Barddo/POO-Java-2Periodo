@@ -12,54 +12,54 @@ public class App {
         System.out.println("Hello Java");
         Mercearia merc = new Mercearia();
         int loop = 1;
-        while (loop != 0) {
+        while (true) {
             menu();
             loop = validaValor(0, 5);
             switch (loop) {
-            case 0:
-                System.exit(0);
-                break;
-            case 1:
-                boolean op = true;
-                System.out.println("Digite o nome do produto");
-                String nome = readLine();
-                System.out.println("Digite o custo do produto");
-                float custo = 0;
-                while (op) {
-                    try {
-                        custo = Float.parseFloat(readLine());
-                        op = false;
-                    } catch (Exception e) {
-                        System.out.println("Entrada inválida, digite novamente.");
+                case 0:
+                    System.exit(0);
+                    break;
+                case 1:
+                    boolean op = true;
+                    System.out.println("Digite o nome do produto");
+                    String nome = readLine();
+                    System.out.println("Digite o custo do produto");
+                    float custo = 0;
+                    while (op) {
+                        try {
+                            custo = Float.parseFloat(readLine());
+                            op = false;
+                        } catch (Exception e) {
+                            System.out.println("Entrada inválida, digite novamente.");
+                        }
                     }
-                }
-                System.out.println("Digite a categoria do produto. ");
-                System.out.println("1 - Comida, 2 - Bebida, 3 - Material de Limpeza");
-                int categoria = validaValor(1, 3);
+                    System.out.println("Digite a categoria do produto. ");
+                    System.out.println("1 - Comida, 2 - Bebida, 3 - Material de Limpeza");
+                    int categoria = validaValor(1, 3);
 
-                merc.adicionaProduto(nome, custo, categoria);
-                break;
-            case 2:
-                System.out.println(merc.mostraProdutos());
-                System.out.println("Digite o produto");
-                System.out.println(validaReais(merc.getPrecoFinal()));
-                break;
-            case 3:
-                System.out.println(merc.mostraProdutos());
-                System.out.println("Digite o produto");
-                System.out.println(validaReais(merc.getProdutoSemImposto()));
-                break;
-            case 4:
-                System.out.println(merc.mostraProdutos());
-                System.out.println("Digite o produto");
-                System.out.println(validaReais(merc.getLucroPorVenda()));
-                break;
-            case 5:
-                System.out.println(merc.mostraProdutos());
-                break;
-            default:
-                System.out.println("Opção inválida");
-                break;
+                    merc.adicionaProduto(nome, custo, categoria);
+                    break;
+                case 2:
+                    System.out.println(merc.mostraProdutos());
+                    System.out.println("Digite o produto");
+                    System.out.println(validaReais(merc.getPrecoFinal()));
+                    break;
+                case 3:
+                    System.out.println(merc.mostraProdutos());
+                    System.out.println("Digite o produto");
+                    System.out.println(validaReais(merc.getProdutoSemImposto()));
+                    break;
+                case 4:
+                    System.out.println(merc.mostraProdutos());
+                    System.out.println("Digite o produto");
+                    System.out.println(validaReais(merc.getLucroPorVenda()));
+                    break;
+                case 5:
+                    System.out.println(merc.mostraProdutos());
+                    break;
+                default:
+                    System.out.println("Opção inválida");
+                    break;
             }
             System.out.println("Digite algo para prosseguir");
             Scanner in = new Scanner(System.in);
@@ -69,7 +69,7 @@ public class App {
 
     public static int read() {
         Scanner in = new Scanner(System.in);
-        int i = 0;
+        int i;
         try {
             i = in.nextInt();
         } catch (Exception e) {
@@ -80,7 +80,7 @@ public class App {
     }
 
     public static int validaValor(int menor, int maior) {
-        int numero = 0;
+        int numero;
         try {
             numero = App.read();
             if (numero < menor || numero > maior) {
@@ -119,7 +119,7 @@ public class App {
     }
 
     public static int validaEntrada() {
-        int numOperador = 0;
+        int numOperador;
         try {
             numOperador = App.read();
             if (numOperador < 0 || numOperador > 5) {

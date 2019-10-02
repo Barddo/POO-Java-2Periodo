@@ -4,8 +4,8 @@ package br.pucminas.atvlab.ArquivosEVetores.atv4;
  * Urna
  */
 public class Urna {
-    public Voto[] votos = new Voto[85];
-    public int[] qntVotos = new int[6];
+    public final Voto[] votos = new Voto[85];
+    public final int[] qntVotos = new int[6];
 
     /**
      * @return the votos
@@ -31,16 +31,15 @@ public class Urna {
 
     @Override
     public String toString() {
-        StringBuilder aux = new StringBuilder();
-        aux.append("Quantidade de votos no primeiro candidado: " + qntVotos[1]);
-        aux.append("\n");
-        aux.append("Quantidade de votos no segundo candidado: " + qntVotos[2]);
-        aux.append("\n");
-        aux.append("Quantidade de votos no terceiro candidado: " + qntVotos[3]);
-        aux.append("\n");
-        aux.append("Quantidade de votos indecidos: " + imprimeIndecisos());
-        aux.append("\n");
-        aux.append("Quantidade de votos nulos: " + imprimeNulos());
-        return aux.toString();
+        String aux = "Quantidade de votos no primeiro candidado: " + qntVotos[1] +
+            "\n" +
+            "Quantidade de votos no segundo candidado: " + qntVotos[2] +
+            "\n" +
+            "Quantidade de votos no terceiro candidado: " + qntVotos[3] +
+            "\n" +
+            "Quantidade de votos indecidos: " + imprimeIndecisos() +
+            "\n" +
+            "Quantidade de votos nulos: " + imprimeNulos();
+        return aux;
     }
 }

@@ -1,7 +1,7 @@
 // public class App {
 //     /**
 //      * Says hello to the world.
-//      * 
+//      *
 //      * @param args The arguments of the program.
 //      */
 //     public static void main(String[] args) {
@@ -25,7 +25,7 @@
 //         StringBuilder aux = new StringBuilder();
 //         Tonner t = new Tonner();
 //         while (pedido.) {
-            
+
 //          }
 //         return aux.toString();
 

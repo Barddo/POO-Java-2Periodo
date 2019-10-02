@@ -1,8 +1,8 @@
 package br.pucminas.Agenda;
 
 public class Telefone {
-    private String numero;
-    private String tipo;
+    private final String numero;
+    private final String tipo;
 
     public Telefone(String numero, String tipo) {
         this.numero = numero;

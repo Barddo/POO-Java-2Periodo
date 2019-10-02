@@ -15,11 +15,9 @@ public class Alarme {
      * haver um método para verificar se é hora de despertar, recebendo hora, minuto
      * e dia da semana como parâmetros.
      */
-    private GregorianCalendar data;
-    private String nome;
+    private final GregorianCalendar data;
 
     public Alarme(String nome, String data) {
-        this.nome = nome;
         int[] datas = StringToData(data);
         this.data = new GregorianCalendar();
         this.data.set(Calendar.HOUR_OF_DAY, datas[0]);
@@ -50,5 +48,5 @@ public class Alarme {
     public void cancelar() {
         data.clear();
     }
-    
+
 }
