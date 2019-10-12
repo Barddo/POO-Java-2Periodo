@@ -5,14 +5,15 @@ package br.pucminas.Grafica;
  */
 public class Grafica {
     protected Impressora impressora;
-    protected double valorColorido;
-    protected double valorPB;
+    protected double valor;
 
     public Grafica() {
-        
+        this.impressora = new Impressora();
     }
-    public void imprimir(Documento d) {
 
+    public void imprimir(Documento d) {
+        d.imprimir(this);
+        this.valor += d.valorImpressao();
     }
 
     public Impressora getImpressora() {
@@ -23,19 +24,17 @@ public class Grafica {
         this.impressora = impressora;
     }
 
-    public double getValorColorido() {
-        return this.valorColorido;
+    /**
+     * @return the valor
+     */
+    public double getValor() {
+        return valor;
     }
 
-    public void setValorColorido(double valorColorido) {
-        this.valorColorido = valorColorido;
-    }
-
-    public double getValorPB() {
-        return this.valorPB;
-    }
-
-    public void setValorPB(double valorPB) {
-        this.valorPB = valorPB;
+    /**
+     * @param valor the valor to set
+     */
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 }

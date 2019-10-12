@@ -13,7 +13,7 @@ public class Impressora {
     }
 
     public void imprimir(Documento d, Grafica g) {
-
+        d.imprimir(g);
     }
 
     /**

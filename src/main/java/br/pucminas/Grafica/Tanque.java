@@ -11,27 +11,14 @@ public abstract class Tanque {
 
     public Tanque() {
         this.capacidade = 1000;
-        this.quantidade = 0;
+        this.quantidade = 500;
         this.minimo = 100;
     }
 
-    public String notifica(Impressora imp) {
-        if (imp.getTanqueColorido().getQuantidade() > imp.getTanqueColorido().getMinimo()) {
-            return "Tanque Colorido abaixo do esperado";
-        }
-        if (imp.getTanquePB().getQuantidade() > imp.getTanquePB().getMinimo()) {
-            return "Tanque Preto e Branco abaixo do esperado";
-        }
-        return "";
-
-    }
+    public abstract String notifica(Impressora imp);
 
     public double getCapacidade() {
         return this.capacidade;
-    }
-
-    public void setCapacidade(double capacidade) {
-        this.capacidade = capacidade;
     }
 
     public double getQuantidade() {
@@ -39,7 +26,7 @@ public abstract class Tanque {
     }
 
     public void setQuantidade(double quantidade) {
-        this.quantidade = quantidade;
+        this.quantidade = (quantidade > 0) && (quantidade <= this.capacidade) ? quantidade : this.capacidade;
     }
 
     public double getMinimo() {
@@ -50,6 +37,16 @@ public abstract class Tanque {
      * @return the consumo
      */
     public double getConsumo() {
-        return consumo;
+        return this.consumo;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder aux = new StringBuilder();
+        aux.append("Capacidade: ");
+        aux.append(this.getCapacidade() + "ml");
+        aux.append(". Quantidade: ");
+        aux.append(this.getQuantidade() + "ml");
+        return aux.toString();
     }
 }

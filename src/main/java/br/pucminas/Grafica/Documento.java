@@ -5,17 +5,19 @@ package br.pucminas.Grafica;
  */
 public abstract class Documento {
     protected int qntPaginas;
+    protected double precoPag;
 
-    public void imprimir(Grafica g) {
+    public abstract void imprimir(Grafica g);
 
-    }
+    public abstract double valorImpressao();
 
-    public double valorImpressao() {
+    public abstract double consumoTinta(Impressora imp);
 
-    }
-
-    public double consumoTinta(Impressora imp) {
-        
+    /**
+     * @return the qntPaginas
+     */
+    public int getQntPaginas() {
+        return qntPaginas;
     }
 
     /**
@@ -26,10 +28,16 @@ public abstract class Documento {
     }
 
     /**
-     * @return the qntPaginas
+     * @return the precoPag
      */
-    public int getQntPaginas() {
-        return qntPaginas;
+    public double getPrecoPag() {
+        return precoPag;
     }
 
+    /**
+     * @param precoPag the precoPag to set
+     */
+    public void setPrecoPag(double precoPag) {
+        this.precoPag = precoPag;
+    }
 }

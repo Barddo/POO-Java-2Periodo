@@ -4,38 +4,26 @@ package br.pucminas.Grafica;
  * DocumentoColorido
  */
 public class DocumentoColorido extends Documento {
-    private double precoPag;
 
-    public DocumentoColorido() {
-        precoPag = 1.2;
+    public DocumentoColorido(int qntPaginas) {
+        super.qntPaginas = qntPaginas;
+        this.precoPag = 1.2;
+    }
+
+    @Override
+    public void imprimir(Grafica g) {
+        double qnt = g.getImpressora().getTanqueColorido().getQuantidade();
+        g.impressora.getTanqueColorido().setQuantidade(qnt - this.consumoTinta(g.getImpressora()));
     }
 
     @Override
     public double valorImpressao() {
-
+        return this.precoPag * super.qntPaginas;
     }
 
     @Override
     public double consumoTinta(Impressora imp) {
-imp.tanques[0]
+        System.out.println(super.qntPaginas * imp.getTanqueColorido().getConsumo());
+        return super.qntPaginas * imp.getTanqueColorido().getConsumo();
     }
-
-    public void imprimir() {
-
-    }
-
-    /**
-     * @return the precoPag
-     */
-    public double getPrecoPag() {
-        return precoPag;
-    }
-
-    /**
-     * @param precoPag the precoPag to set
-     */
-    public void setPrecoPag(double precoPag) {
-        this.precoPag = precoPag;
-    }
-
 }

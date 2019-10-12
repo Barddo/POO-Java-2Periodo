@@ -7,8 +7,15 @@ public class App {
      * @param args The arguments of the program.
      */
     public static void main(String[] args) {
-        System.out.println("Hello World!");
         Grafica graf = new Grafica();
-        graf.imprimir(new DocumentoColorido());
+        System.out.println(graf.getImpressora().getTanqueColorido().notifica(graf.getImpressora()));
+        graf.imprimir(new DocumentoColorido(100));
+        System.out.println(graf.getImpressora().getTanqueColorido().notifica(graf.getImpressora()));
+        System.out.println(graf.getImpressora().getTanqueColorido().toString());
+
+        System.out.println(graf.getImpressora().getTanquePB().notifica(graf.getImpressora()));
+        graf.imprimir(new DocumentoPretoBranco(400));
+        System.out.println(graf.getImpressora().getTanquePB().toString());
+        System.out.println(graf.getImpressora().getTanquePB().notifica(graf.getImpressora()));
     }
 }
