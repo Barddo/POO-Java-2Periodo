@@ -55,6 +55,7 @@ public class App {
                     in.next();
                     break;
             }
+            in.close();
         }
     }
 
@@ -67,6 +68,7 @@ public class App {
             System.out.println("Entrada inválida, digite novamente:");
             i = App.read();
         }
+        in.close();
         return i;
     }
 
