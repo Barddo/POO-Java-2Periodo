@@ -4,8 +4,8 @@ package br.pucminas.Grafica;
  * Impressora
  */
 public class Impressora {
-    protected Tanque tanqueColorido;
-    protected Tanque tanquePB;
+    protected final Tanque tanqueColorido;
+    protected final Tanque tanquePB;
 
     public Impressora() {
         tanqueColorido = new TanqueColorido();

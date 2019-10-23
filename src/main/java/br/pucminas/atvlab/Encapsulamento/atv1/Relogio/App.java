@@ -16,37 +16,37 @@ public class App {
             menu();
             int opcao = validaEntrada();
             switch (opcao) {
-            case 0:
-                System.exit(0);
-                break;
-            case 1:
-                r.ajusteHora(readInt("Digite as horas:"), readInt("Digite os minutos:"),
+                case 0:
+                    System.exit(0);
+                    break;
+                case 1:
+                    r.ajusteHora(readInt("Digite as horas:"), readInt("Digite os minutos:"),
                         readInt("Digite os segundos:"));
-                System.out.println(r.exibeInfomacoes());
-                break;
-            case 2:
-                r.ajusteData(readInt("Digite o dia:"), readInt("Digite o mês:"));
-                System.out.println(r.exibeInfomacoes());
-                break;
-            case 3:
-                r.passarTempo(readInt("Digite os segundos:"));
-                System.out.println(r.exibeInfomacoes());
-                break;
-            case 4:
-                System.out.println(r.exibeInfomacoes());
-                break;
-            case 5:
-                r.reiniciar();
-                break;
-            case 6:
-                System.out.println("Bissexto? " + r.bissexto());
-                break;
-            case 7:
-                System.out.println("Dia do ano: " + r.getDiaAno());
-                break;
-            default:
-                System.out.println("Opção inválida");
-                break;
+                    System.out.println(r.exibeInfomacoes());
+                    break;
+                case 2:
+                    r.ajusteData(readInt("Digite o dia:"), readInt("Digite o mês:"));
+                    System.out.println(r.exibeInfomacoes());
+                    break;
+                case 3:
+                    r.passarTempo(readInt("Digite os segundos:"));
+                    System.out.println(r.exibeInfomacoes());
+                    break;
+                case 4:
+                    System.out.println(r.exibeInfomacoes());
+                    break;
+                case 5:
+                    r.reiniciar();
+                    break;
+                case 6:
+                    System.out.println("Bissexto? " + r.bissexto());
+                    break;
+                case 7:
+                    System.out.println("Dia do ano: " + r.getDiaAno());
+                    break;
+                default:
+                    System.out.println("Opção inválida");
+                    break;
             }
             System.out.println("Digite algo para prosseguir");
             readLine();

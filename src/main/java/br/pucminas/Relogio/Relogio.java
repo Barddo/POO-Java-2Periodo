@@ -7,9 +7,9 @@ import java.text.MessageFormat;
  */
 public class Relogio {
     private static int resto = 0;
+    private final int[] diasMes = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     private int hora, minuto, segundo;
     private int dia, mes;
-    private final int[] diasMes = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
     private int ano;
 
     public Relogio() {
@@ -144,14 +144,14 @@ public class Relogio {
     }
 
     public String exibeInfomacoes() {
-        Object[] params = new Object[] { "Horário", getHora(), ":", getMinuto(), ":", getSegundo(), "\nDia:", getDia(),
-                ", Mes:", getMes(), ", Ano:", getAno() };
+        Object[] params = new Object[]{"Horário", getHora(), ":", getMinuto(), ":", getSegundo(), "\nDia:", getDia(),
+            ", Mes:", getMes(), ", Ano:", getAno()};
 
         return MessageFormat.format("{0} {1}{2}{3}{4}{5} {6}{7}{8}{9}{10}{11}", params);
     }
 
     public void passarTempo(int s) {
         validaMes(validaDia(validaHora(this.hora + validaMin(this.minuto + validaSeg(s + this.segundo))) + this.dia)
-                + this.mes);
+            + this.mes);
     }
 }

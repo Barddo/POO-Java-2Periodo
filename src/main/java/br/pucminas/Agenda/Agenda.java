@@ -8,8 +8,8 @@ import java.util.GregorianCalendar;
  * Agenda
  */
 public class Agenda {
-    protected ArrayList<Compromisso> compromissos;
     private final ArrayList<ContatoBasico> contatos;
+    protected ArrayList<Compromisso> compromissos;
 
     Agenda() {
         contatos = new ArrayList<ContatoBasico>();

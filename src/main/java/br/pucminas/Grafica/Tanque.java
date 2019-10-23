@@ -4,9 +4,9 @@ package br.pucminas.Grafica;
  * Tanque
  */
 public abstract class Tanque {
-    protected double capacidade;
+    protected final double capacidade;
+    protected final double minimo;
     protected double quantidade;
-    protected double minimo;
     protected double consumo;
 
     public Tanque() {
@@ -42,11 +42,11 @@ public abstract class Tanque {
 
     @Override
     public String toString() {
-        StringBuilder aux = new StringBuilder();
-        aux.append("Capacidade: ");
-        aux.append(this.getCapacidade() + "ml");
-        aux.append(". Quantidade: ");
-        aux.append(this.getQuantidade() + "ml");
-        return aux.toString();
+        String aux = new StringBuilder()
+            .append("Capacidade: ")
+            .append(this.getCapacidade()).append("ml")
+            .append(". Quantidade: ")
+            .append(this.getQuantidade()).append("ml").toString();
+        return aux;
     }
 }

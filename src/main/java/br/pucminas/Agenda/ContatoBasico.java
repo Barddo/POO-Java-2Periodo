@@ -3,8 +3,8 @@ package br.pucminas.Agenda;
 import java.util.ArrayList;
 
 abstract public class ContatoBasico {
-    protected String nome;
     protected final ArrayList<Telefone> telefones;
+    protected String nome;
 
     public ContatoBasico() {
         nome = "";

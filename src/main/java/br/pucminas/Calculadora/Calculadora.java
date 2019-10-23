@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Calculadora {
-    public double resultado;
     final String[] operacoes = new String[]{"+", "-", "*", "/", "^"};
+    public double resultado;
     private int primeiroNumero, segundoNumero;
 
     private boolean EhValido(String tentativa) {

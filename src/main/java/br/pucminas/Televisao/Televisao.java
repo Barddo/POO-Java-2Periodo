@@ -56,7 +56,7 @@ public class Televisao {
      * Liga a televisão
      */
     private void ligar() throws InterruptedException {
-        if (this.estado == false) {
+        if (!this.estado) {
             System.out.println("Ligando...");
             TimeUnit.SECONDS.sleep(2);
             this.estado = true;
