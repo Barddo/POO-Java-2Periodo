@@ -45,5 +45,7 @@ buildNumber.properties
 *.iml
 .idea/*
 !.idea/runConfigurations/
+#
 # C/C++
+#
 cmake-build-debug/
