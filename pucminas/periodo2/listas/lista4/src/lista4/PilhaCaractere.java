@@ -25,7 +25,7 @@ public class PilhaCaractere {
 
     // Insere o item, passado como parâmetro para esse método, no topo da pilha.
     public void empilhar(Caractere l) {
-        if (temApagador() && l == apagador) {
+        if (temApagador() && l.equals(apagador)) {
             desempilhar();
         } else {
             // inserção da nova célula no topo da pilha.

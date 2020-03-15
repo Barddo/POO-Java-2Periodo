@@ -24,4 +24,19 @@ public class Caractere {
     public String toString() {
         return String.valueOf(letra);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Caractere)) return false;
+
+        Caractere caractere = (Caractere) o;
+
+        return letra == caractere.letra;
+    }
+
+    @Override
+    public int hashCode() {
+        return letra;
+    }
 }
